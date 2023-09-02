@@ -12,7 +12,7 @@ int main() {
     int requestId = NewContainerRequest(GOSTRING(DEFAULT_IMAGE));
     WithExposedTcpPort(requestId, 8080);
     WithWaitForHttp(requestId, 8080, GOSTRING("/__admin/mappings"));
-    WithFile(requestId, GOSTRING("test_data/hello.json"), GOSTRING("/home/wiremock/__files/hello.json"));
+    WithFile(requestId, GOSTRING("test_data/hello.json"), GOSTRING("/home/wiremock/mappings/hello.json"));
     // TODO: pass arrays in a fancy way: int customizers[1] = {customizerId}; 
     struct RunContainer_return ret = RunContainer(requestId);
     int containerId = ret.r0;

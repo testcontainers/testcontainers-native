@@ -24,6 +24,7 @@ var customizers map[int][]*testcontainers.CustomizeRequestOption
 func NewContainerRequest(image string) (id int) {
 	req := testcontainers.ContainerRequest{
 		Image: image,
+		Cmd:   []string{""},
 	}
 
 	containerRequests = append(containerRequests, &req)
@@ -74,7 +75,7 @@ func _GetURI(ctx context.Context, container testcontainers.Container, port int) 
 		return "", err
 	}
 
-	mappedPort, err := container.MappedPort(ctx, nat.Port(port))
+	mappedPort, err := container.MappedPort(ctx, nat.Port(strconv.Itoa(port)))
 	if err != nil {
 		return "", fmt.Errorf("Cannot retrieve mappedPort for %d: %w", port, err)
 	}
