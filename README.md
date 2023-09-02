@@ -1,5 +1,10 @@
 # Testcontainers C & Shared Lib
 
+> **WARNING**: This is a prototype that partially works,
+> but there is a lot to do before it can be distributed
+> and used in production.
+> Contributions are welcome!
+
 This is not a standalone [Testcontainers](https://testcontainers.org/) engine,
 but a C-style shared library adapter for native languages like C/C++, D, Lua, Swift, etc.
 It is a MVP SDK that can be later extended for the languages.
@@ -9,7 +14,7 @@ which is one of the most powerful Testcontainers implementations.
 
 ## Usage in C/C++
 
-See [](./testcontaincers-c/)
+See [the examples](./testcontaincers-c/)
 
 ## Usage in other languages
 
