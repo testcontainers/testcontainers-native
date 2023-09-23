@@ -10,6 +10,8 @@ add_library(${PROJECT_NAME} SHARED
     impl.c
 )
 
+include_directories(${testcontainers-c_SOURCE_DIR})
+
 set_target_properties(${PROJECT_NAME} PROPERTIES 
     VERSION ${PROJECT_VERSION}    
     PUBLIC_HEADER testcontainers-c-wiremock.h)

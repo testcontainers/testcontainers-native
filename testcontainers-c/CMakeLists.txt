@@ -18,6 +18,7 @@ add_custom_command(OUTPUT ${TARGET_LIB}
   COMMENT "Building Tesctcontainers C shared library")
 
 add_library(${PROJECT_NAME} SHARED
+  testcontainers-c.h  
   testcontainers-c.so
 )
 

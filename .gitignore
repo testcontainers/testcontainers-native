@@ -1,8 +1,7 @@
-testcontainers-c/testcontainers.so
-testcontainers-c/testcontainers.dll
-testcontainers-c/testcontainers.h
-testcontainers-c/wiremock_hello_c
+# IDE
+.vscode
 
+# CMake
 CMakeFiles
 Makefile
 CMakeCache.txt
@@ -12,6 +11,9 @@ CMakeCache.txt
 # Generated files
 testcontainers-c/testcontainers-c.h
 testcontainers-c/testcontainers-c.so
+testcontainers-c/testcontainers.so
+testcontainers-c/testcontainers.dll
+testcontainers-c/testcontainers.h
 *.so
 *.exe
 *.dll
