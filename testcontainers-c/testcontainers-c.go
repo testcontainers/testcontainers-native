@@ -21,9 +21,9 @@ var customizers map[int][]*testcontainers.CustomizeRequestOption
 // Creates Unique container request and returns its ID
 //
 //export tc_new_container_request
-func tc_new_container_request(image string) (id int) {
+func tc_new_container_request(image *C.char) (id int) {
 	req := testcontainers.ContainerRequest{
-		Image: image,
+		Image: C.GoString(image),
 		Cmd:   []string{""},
 	}
 
@@ -93,11 +93,11 @@ func tc_with_wait_for_http(requestID int, port int, url string) {
 }
 
 //export tc_with_file
-func tc_with_file(requestID int, filePath string, targetPath string) {
+func tc_with_file(requestID int, filePath *C.char, targetPath *C.char) {
 	req := func(req *testcontainers.GenericContainerRequest) {
 		cfgFile := testcontainers.ContainerFile{
-			HostFilePath:      filePath,
-			ContainerFilePath: targetPath,
+			HostFilePath:      C.GoString(filePath),
+			ContainerFilePath: C.GoString(targetPath),
 			FileMode:          0755,
 		}
 		req.Files = append(req.Files, cfgFile)

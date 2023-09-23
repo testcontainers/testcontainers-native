@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <string.h>
-#include "testcontainers-c-wiremock.h"
+#include "testcontainers-c.h"
 
+#define DEFAULT_IMAGE "wiremock/wiremock:3.0.1-1"
 #define GOSTRING(X) (GoString) {X, strlen(X)}
 
 int main() {
     printf("Using WireMock with the Testcontainers C binding:\n");
 
-    printf("Creating new container: %s\n", DEFAULT_WIREMOCK_IMAGE);
-    int requestId = tc_wm_new_default_container();
-    tc_wm_with_mapping(requestId, "test_data/hello.json", "hello");
-    //tc_with_file(requestId, "test_data/hello.json", "/home/wiremock/mappings/hello.json");
+    printf("Creating new container: %s\n", DEFAULT_IMAGE);
+    int requestId = tc_new_container_request(DEFAULT_IMAGE);
+    tc_with_exposed_tcp_port(requestId, 8080);
+    tc_with_wait_for_http(requestId, 8080, GOSTRING("/__admin/mappings"));
+    tc_with_file(requestId, "test_data/hello.json", "/home/wiremock/mappings/hello.json");
     struct tc_run_container_return ret = tc_run_container(requestId);
     int containerId = ret.r0;
     if (containerId == -1) {
@@ -25,7 +27,7 @@ int main() {
         return -1;
     }
     if (response.r0 != 200) {
-        printf("Received wrong response code: %d instead of %d\n%s\n", response.r0, 200, response.r2);
+        printf("Received wrong response code: %d instead of %d\n%s\n%s\n", response.r0, 200, response.r1, response.r2);
         return -1;
     }
     printf("Server Response: HTTP-%d\n%s\n\n", response.r0, response.r1);

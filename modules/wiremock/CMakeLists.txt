@@ -9,6 +9,7 @@ add_library(${PROJECT_NAME} SHARED
     testcontainers-c-wiremock.h
     impl.c
 )
+add_dependencies(${PROJECT_NAME} testcontainers-c)
 
 include_directories(${testcontainers-c_SOURCE_DIR})
 
