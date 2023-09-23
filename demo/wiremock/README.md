@@ -3,6 +3,16 @@
 Demonstrates usage of the module in a simple main function.
 No test framework is used here.
 
+## Running demo
+
+From the root of the repository:
+
+```bash
+cmake --build .
+cd demo/wiremock
+./demo.out
+```
+
 ## Wishlist
 
 The library implementation is sub-optimal at the moment.
