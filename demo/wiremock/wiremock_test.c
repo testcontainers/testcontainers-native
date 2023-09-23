@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-#include "testcontainers.h"
+#include "testcontainers-c.h"
+#include "testcontainers-c-wiremock.h"
 
 #define DEFAULT_IMAGE "wiremock/wiremock:3.0.1-1"
 #define GOSTRING(X) (GoString) {X, strlen(X)}
@@ -13,7 +14,6 @@ int main() {
     WithExposedTcpPort(requestId, 8080);
     WithWaitForHttp(requestId, 8080, GOSTRING("/__admin/mappings"));
     WithFile(requestId, GOSTRING("test_data/hello.json"), GOSTRING("/home/wiremock/mappings/hello.json"));
-    // TODO: pass arrays in a fancy way: int customizers[1] = {customizerId}; 
     struct RunContainer_return ret = RunContainer(requestId);
     int containerId = ret.r0;
     if (containerId == -1) {

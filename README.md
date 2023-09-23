@@ -36,3 +36,4 @@ Feel free to contribute examples or SDKs for the languages.
 
 - [Vladimir Vivien, Calling Go Functions from Other Languages using C Shared Libraries](https://github.com/vladimirvivien/go-cshared-examples)
 - [Ben McClelland, An Adventure into CGO — Calling Go code with C](https://medium.com/@ben.mcclelland/an-adventure-into-cgo-calling-go-code-with-c-b20aa6637e75)
+- https://insujang.github.io/2019-11-28/implementing-kubernetes-cpp-client-library
