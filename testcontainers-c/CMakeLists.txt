@@ -6,22 +6,23 @@ include(GNUInstallDirs)
 
 set(SRCS testcontainers-c.go)
 
+set(TARGET testcontainers-c-shim)
 set(TARGET_LIB testcontainers-c.so)
 set(TARGET_HEADER testcontainers-c.h)
 
-add_custom_command(OUTPUT ${TARGET_LIB}
+add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${TARGET_LIB}
   DEPENDS ${SRCS}
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND env GOPATH=${GOPATH} go build -buildmode=c-shared
   -o "${CMAKE_CURRENT_BINARY_DIR}/${TARGET_LIB}"
   ${CMAKE_GO_FLAGS} ${SRCS}
-  COMMENT "Building Tesctcontainers C shared library")
+  COMMENT "Building Testcontainers C shared library")
 
-add_library(${PROJECT_NAME} SHARED
-  testcontainers-c.h  
-  testcontainers-c.so
-)
+add_custom_target(${TARGET} DEPENDS ${TARGET_LIB} ${TARGET_HEADER})
 
+add_library(${PROJECT_NAME} SHARED ${CMAKE_CURRENT_BINARY_DIR}/${TARGET_LIB})
+link_directories(${CMAKE_CURRENT_BINARY_DIR})
+add_dependencies(${PROJECT_NAME} ${TARGET})
 set_target_properties(${PROJECT_NAME} PROPERTIES 
     LINKER_LANGUAGE C
     VERSION ${PROJECT_VERSION}    
