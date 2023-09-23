@@ -1,5 +1,11 @@
 # Testcontainers for C/C+ and other native languages
 
+<p align="center">
+    <!--<a href="https://wiremock.org" target="_blank">-->
+        <img width="512px" src="docs/images/logo/logo_testcontainers_c_wide.png" alt="Testcontainers for C Logo"/>
+    <!--</a>-->
+</p>
+
 > **WARNING**: This is a prototype.
 > There is a lot to do before it can be distributed and used in production,
 > see the GitHub Issues.
