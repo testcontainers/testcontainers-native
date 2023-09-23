@@ -14,11 +14,7 @@ jobs:
 
       - name: Configure CMake
         uses: threeal/cmake-action@v1.3.0
-
-      - name: Build the project
-        run: |
-          cmake --build .
-
-      - name: Test the project
-        run: |
-          ctest --output-on-failure
+        with:
+          run-build: true
+          run-test: true
+          test-args: "--output-on-failure"
