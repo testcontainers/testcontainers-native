@@ -19,8 +19,8 @@ cd demo/wiremock
 
 ## Wishlist
 
-The library implementation is sub-optimal at the moment.
-This is how we want to see the code once everything is done:
+The library implementation and api is sub-optimal at the moment.
+This is how we want to see the code once everything is done, maybe:
 
 ```c
 #include <stdio.h>

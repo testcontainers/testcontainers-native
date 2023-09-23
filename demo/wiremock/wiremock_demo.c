@@ -10,11 +10,11 @@ int main() {
     printf("Using WireMock with the Testcontainers C binding:\n");
 
     printf("Creating new container: %s\n", DEFAULT_IMAGE);
-    int requestId = NewContainerRequest(GOSTRING(DEFAULT_IMAGE));
-    WithExposedTcpPort(requestId, 8080);
-    WithWaitForHttp(requestId, 8080, GOSTRING("/__admin/mappings"));
-    WithFile(requestId, GOSTRING("test_data/hello.json"), GOSTRING("/home/wiremock/mappings/hello.json"));
-    struct RunContainer_return ret = RunContainer(requestId);
+    int requestId = tc_new_container_request(GOSTRING(DEFAULT_IMAGE));
+    tc_with_exposed_tcp_port(requestId, 8080);
+    tc_with_wait_for_http(requestId, 8080, GOSTRING("/__admin/mappings"));
+    tc_with_file(requestId, GOSTRING("test_data/hello.json"), GOSTRING("/home/wiremock/mappings/hello.json"));
+    struct tc_run_container_return ret = tc_run_container(requestId);
     int containerId = ret.r0;
     if (containerId == -1) {
         printf("Failed to run the container: %s\n", ret.r1);
@@ -22,7 +22,7 @@ int main() {
     }
 
     printf("Sending HTTP request to the container\n");
-    struct SendHttpGet_return response = SendHttpGet(containerId, 8080, GOSTRING("/hello"));
+    struct tc_send_http_get_return response = tc_send_http_get(containerId, 8080, GOSTRING("/hello"));
     if (response.r0 == -1) {
         printf("Failed to send HTTP request: %s\n", response.r2);
         return -1;

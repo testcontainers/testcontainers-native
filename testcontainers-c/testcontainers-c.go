@@ -20,8 +20,8 @@ var customizers map[int][]*testcontainers.CustomizeRequestOption
 
 // Creates Unique container request and returns its ID
 //
-//export NewContainerRequest
-func NewContainerRequest(image string) (id int) {
+//export tc_new_container_request
+func tc_new_container_request(image string) (id int) {
 	req := testcontainers.ContainerRequest{
 		Image: image,
 		Cmd:   []string{""},
@@ -31,8 +31,8 @@ func NewContainerRequest(image string) (id int) {
 	return len(containerRequests) - 1
 }
 
-//export RunContainer
-func RunContainer(requestID int) (id int, errstr *C.char) {
+//export tc_run_container
+func tc_run_container(requestID int) (id int, errstr *C.char) {
 	id, err := _RunContainer(requestID)
 	if err != nil {
 		return -1, ToCString(err)
@@ -62,8 +62,8 @@ func _RunContainer(requestID int) (id int, err error) {
 	return len(containers) - 1, nil
 }
 
-//export GetURI
-func GetURI(containerID int, port int) (uri string, e error) {
+//export tc_get_uri
+func tc_get_uri(containerID int, port int) (uri string, e error) {
 	ctx := context.Background()
 	container := *containers[containerID]
 	return _GetURI(ctx, container, port)
@@ -83,8 +83,8 @@ func _GetURI(ctx context.Context, container testcontainers.Container, port int) 
 	return "http://" + hostIP + ":" + mappedPort.Port(), nil
 }
 
-//export WithWaitForHttp
-func WithWaitForHttp(requestID int, port int, url string) {
+//export tc_with_wait_for_http
+func tc_with_wait_for_http(requestID int, port int, url string) {
 	req := func(req *testcontainers.GenericContainerRequest) {
 		req.WaitingFor = wait.ForHTTP(url).WithPort(nat.Port(strconv.Itoa(port)))
 	}
@@ -92,8 +92,8 @@ func WithWaitForHttp(requestID int, port int, url string) {
 	registerCustomizer(requestID, req)
 }
 
-//export WithFile
-func WithFile(requestID int, filePath string, targetPath string) {
+//export tc_with_file
+func tc_with_file(requestID int, filePath string, targetPath string) {
 	req := func(req *testcontainers.GenericContainerRequest) {
 		cfgFile := testcontainers.ContainerFile{
 			HostFilePath:      filePath,
@@ -106,8 +106,8 @@ func WithFile(requestID int, filePath string, targetPath string) {
 	registerCustomizer(requestID, req)
 }
 
-//export WithExposedTcpPort
-func WithExposedTcpPort(requestID int, port int) {
+//export tc_with_exposed_tcp_port
+func tc_with_exposed_tcp_port(requestID int, port int) {
 	req := func(req *testcontainers.GenericContainerRequest) {
 		req.ExposedPorts = append(req.ExposedPorts, strconv.Itoa(port)+"/tcp")
 	}
@@ -123,8 +123,8 @@ func registerCustomizer(requestID int, customizer testcontainers.CustomizeReques
 	return len(customizers[requestID]) - 1
 }
 
-//export SendHttpGet
-func SendHttpGet(containerID int, port int, endpoint string) (responseCode C.int, responseBody *C.char, errstr *C.char) {
+//export tc_send_http_get
+func tc_send_http_get(containerID int, port int, endpoint string) (responseCode C.int, responseBody *C.char, errstr *C.char) {
 	container := *containers[containerID]
 	responseCodeVal, responseBodyStr, err := SendHttpRequest(http.MethodGet, container, port, endpoint, nil)
 	if err != nil {
