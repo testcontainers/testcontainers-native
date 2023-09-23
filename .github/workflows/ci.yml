@@ -1,0 +1,24 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3.5.3
+
+      - name: Configure CMake
+        uses: threeal/cmake-action@v1.3.0
+
+      - name: Build the project
+        run: |
+          cmake --build .
+
+      - name: Test the project
+        run: |
+          ctest --output-on-failure
