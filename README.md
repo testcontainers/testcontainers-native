@@ -23,7 +23,81 @@ It is a MVP SDK that can be later extended for the languages.
 The project is based on [Testcontainers for Go](https://golang.testcontainers.org/)
 which is one of the most powerful Testcontainers implementations.
 
-## Sample output
+## Quick Start
+
+Right now you have to check out and build the project to use it locally.
+You will need CMake, Docker, Golang 1.19++, and recent C/C++ build tools.
+
+```bash
+# Build project
+cmake .
+cmake --build .
+
+# Run embedded tests/demos
+ctest --output-on-failure
+
+## OPTIONAL - Install to the local system
+cmake --install ..
+```
+
+**Disclaimer:** The commands above may explode, proper coverage on different platforms is yet to be implemented.
+At the moment the default compiler and linker options are used, so code is not very portable.
+CMake's install option is not being tested at all, stay tuned for package managers.
+Any patches and issue reports are welcome!
+
+### Writing a first test
+
+You can use a C/C++ framework for writing tests, e.g. CTest or CppUnit.
+Or you can just have a small launcher as presented below:
+
+<details>
+<summary>
+main.c - Show me the Code
+</summary>
+
+### main.c
+
+```c
+#include <stdio.h>
+#include <string.h>
+#include "testcontainers-c.h"
+
+#define DEFAULT_IMAGE "wiremock/wiremock:3.0.1-1"
+#define GOSTRING(X) (GoString) {X, strlen(X)}
+
+int main() {
+    printf("Using WireMock with the Testcontainers C binding:\n");
+
+    printf("Creating new container: %s\n", DEFAULT_IMAGE);
+    int requestId = tc_new_container_request(DEFAULT_IMAGE);
+    tc_with_exposed_tcp_port(requestId, 8080);
+    tc_with_wait_for_http(requestId, 8080, GOSTRING("/__admin/mappings"));
+    tc_with_file(requestId, "test_data/hello.json", "/home/wiremock/mappings/hello.json");
+    struct tc_run_container_return ret = tc_run_container(requestId);
+    int containerId = ret.r0;
+    if (containerId == -1) {
+        printf("Failed to run the container: %s\n", ret.r1);
+        return -1;
+    }
+
+    printf("Sending HTTP request to the container\n");
+    struct tc_send_http_get_return response = tc_send_http_get(containerId, 8080, GOSTRING("/hello"));
+    if (response.r0 == -1) {
+        printf("Failed to send HTTP request: %s\n", response.r2);
+        return -1;
+    }
+    if (response.r0 != 200) {
+        printf("Received wrong response code: %d instead of %d\n%s\n%s\n", response.r0, 200, response.r1, response.r2);
+        return -1;
+    }
+    printf("Server Response: HTTP-%d\n%s\n\n", response.r0, response.r1);
+    return 0;
+}
+```
+
+</details>
+
+### Sample output
 
 This is how a very simple run without a test framework may look like.
 
