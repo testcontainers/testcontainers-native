@@ -1,4 +1,4 @@
-# WireMock Module fort Testcontainers C
+# WireMock Module for Testcontainers C
 
 This module allows provisioning the WireMock server as a standalone container within your tests,
 based on [WireMock Docker](https://github.com/wiremock/wiremock-docker).
