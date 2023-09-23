@@ -10,3 +10,5 @@ add_executable(${TARGET_OUT}
 )
 target_link_libraries(${TARGET_OUT} PRIVATE testcontainers-c)
 target_link_libraries(${TARGET_OUT} PRIVATE testcontainers-c-wiremock)
+
+add_test(NAME wiremock_smoke COMMAND ./demo.out)
