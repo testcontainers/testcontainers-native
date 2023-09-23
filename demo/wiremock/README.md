@@ -1,6 +1,6 @@
 # Demo - WireMock on Testcontainers C
 
-Demonstrates usage of the module in a simple main function.
+Demonstrates usage of the [WireMock](https://wiremock.org/) module in a simple main function.
 No test framework is used here.
 
 ## Running demo
@@ -12,6 +12,10 @@ cmake --build .
 cd demo/wiremock
 ./demo.out
 ```
+
+## Sample output
+
+![Sample Output](./sample_output.png)
 
 ## Wishlist
 
