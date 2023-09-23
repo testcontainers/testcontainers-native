@@ -15,8 +15,8 @@ testcontainers-c/testcontainers.so
 testcontainers-c/testcontainers.dll
 testcontainers-c/testcontainers.h
 *.so
+*.out
 *.exe
 *.dll
 *.so.0.0.1
 *.dll.0.0.1
-demo/wiremock_hello_c/wiremock_hello_c
