@@ -10,7 +10,7 @@ set(TARGET testcontainers-c-shim)
 set(TARGET_LIB testcontainers-c.so)
 set(TARGET_HEADER testcontainers-c.h)
 
-add_custom_command(OUTPUT ${TARGET_LIB}
+add_custom_command(OUTPUT ${TARGET_LIB} ${TARGET_HEADER}
   DEPENDS ${SRCS}
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND env GOPATH=${GOPATH} go build -buildmode=c-shared
