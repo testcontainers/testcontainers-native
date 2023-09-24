@@ -11,7 +11,7 @@ add_executable(${VANILLA_OUT} wiremock_demo_vanilla.c)
 add_dependencies(${VANILLA_OUT} testcontainers-c-shim)
 target_link_libraries(${VANILLA_OUT} PRIVATE testcontainers-c)
 add_test(NAME vanilla_smoke COMMAND ${VANILLA_OUT}
-    WORKING_DIRECTORY ${testcontainers-c-wiremock-demo-c_SOURCE_DIR})
+    WORKING_DIRECTORY ${testcontainers-c-wiremock-demo_SOURCE_DIR})
 
 # WireMock Module demo
 add_executable(${TARGET_OUT} wiremock_demo.c)
@@ -20,4 +20,4 @@ target_include_directories(${TARGET_OUT} PRIVATE ${testcontainers-c-wiremock_SOU
 target_link_libraries(${TARGET_OUT} PRIVATE testcontainers-c)
 target_link_libraries(${TARGET_OUT} PRIVATE testcontainers-c-wiremock)
 add_test(NAME wiremock_module_smoke COMMAND ${TARGET_OUT}
-    WORKING_DIRECTORY ${testcontainers-c-wiremock-demo-c_SOURCE_DIR})
+    WORKING_DIRECTORY ${testcontainers-c-wiremock-demo_SOURCE_DIR})
