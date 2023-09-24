@@ -89,8 +89,8 @@ int main() {
     tc_with_file(requestId, "test_data/hello.json", "/home/wiremock/mappings/hello.json");
     struct tc_run_container_return ret = tc_run_container(requestId);
     int containerId = ret.r0;
-    if (containerId == -1) {
-        printf("Failed to run the container: %s\n", ret.r1);
+    if (!ret.r1) {
+        printf("Failed to run the container: %s\n", ret.r2);
         return -1;
     }
 

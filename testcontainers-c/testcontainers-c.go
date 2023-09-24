@@ -32,15 +32,15 @@ func tc_new_container_request(image *C.char) (id int) {
 }
 
 //export tc_run_container
-func tc_run_container(requestID int) (id int, errstr *C.char) {
-	id, err := _RunContainer(requestID)
+func tc_run_container(requestID int) (id int, ok bool, errstr *C.char) {
+	id, ok, err := _RunContainer(requestID)
 	if err != nil {
-		return -1, ToCString(err)
+		return -1, ok, ToCString(err)
 	}
-	return id, nil
+	return id, ok, nil
 }
 
-func _RunContainer(requestID int) (id int, err error) {
+func _RunContainer(requestID int) (id int, ok bool, err error) {
 	req := *containerRequests[requestID]
 	ctx := context.Background()
 
@@ -54,12 +54,37 @@ func _RunContainer(requestID int) (id int, err error) {
 	}
 
 	container, err := testcontainers.GenericContainer(ctx, genericContainerReq)
+	containerId := -1
+	if container != nil {
+		// We register the container even if it failed
+		containers = append(containers, &container)
+		containerId = len(containers) - 1
+	}
 	if err != nil {
-		return -1, err
+		return containerId, false, err
 	}
 
 	containers = append(containers, &container)
-	return len(containers) - 1, nil
+	return containerId, true, nil
+}
+
+//export tc_get_container_log
+func tc_get_container_log(containerID int) (log *C.char) {
+	ctx := context.Background()
+	container := *containers[containerID]
+
+	logs, err := container.Logs(ctx)
+	if err != nil {
+		return nil
+	}
+
+	bytes, err := io.ReadAll(logs)
+	if err != nil {
+		return nil
+	}
+
+	//FIXME: Returning ERR here results in panic with "invalid memory address or nil pointer dereference" in CgoCheckResult
+	return C.CString(string(bytes))
 }
 
 //export tc_get_uri
