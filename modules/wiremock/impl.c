@@ -26,7 +26,7 @@ void tc_wm_with_mapping(GoInt requestID, char* filePath, char* destination) {
         strcat(dest_file, ".json");
     }
 
-    printf("DEBUG: %s to %s\n", filePath, dest_file);
+    printf("DEBUG: %s to %s.\n", filePath, dest_file);
     tc_with_file(requestID, filePath, dest_file); 
 };
 

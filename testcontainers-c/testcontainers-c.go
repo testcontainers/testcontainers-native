@@ -56,7 +56,7 @@ func _RunContainer(requestID int) (id int, ok bool, err error) {
 	container, err := testcontainers.GenericContainer(ctx, genericContainerReq)
 	containerId := -1
 	if container != nil {
-		// We register the container even if it failed
+		// We register the container even if the run failed
 		containers = append(containers, &container)
 		containerId = len(containers) - 1
 	}
