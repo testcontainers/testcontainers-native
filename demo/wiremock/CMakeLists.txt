@@ -5,13 +5,14 @@ set(TARGET_OUT demo_wiremock_module.out)
 set(VANILLA_OUT demo_vanilla.out)
 
 include_directories(${testcontainers-c_SOURCE_DIR})
+# WORKING_DIRECTORY breaks shared lib loading
+file(COPY test_data DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 # Vanilla Demo for WireMock
 add_executable(${VANILLA_OUT} wiremock_demo_vanilla.c)
 add_dependencies(${VANILLA_OUT} testcontainers-c-shim)
 target_link_libraries(${VANILLA_OUT} PRIVATE testcontainers-c)
-add_test(NAME vanilla_smoke COMMAND ${VANILLA_OUT}
-    WORKING_DIRECTORY ${testcontainers-c-wiremock-demo_SOURCE_DIR})
+add_test(NAME vanilla_smoke COMMAND ${VANILLA_OUT})
 
 # WireMock Module demo
 add_executable(${TARGET_OUT} wiremock_demo.c)
@@ -19,5 +20,4 @@ add_dependencies(${VANILLA_OUT} testcontainers-c-shim)
 target_include_directories(${TARGET_OUT} PRIVATE ${testcontainers-c-wiremock_SOURCE_DIR})
 target_link_libraries(${TARGET_OUT} PRIVATE testcontainers-c)
 target_link_libraries(${TARGET_OUT} PRIVATE testcontainers-c-wiremock)
-add_test(NAME wiremock_module_smoke COMMAND ${TARGET_OUT}
-    WORKING_DIRECTORY ${testcontainers-c-wiremock-demo_SOURCE_DIR})
+add_test(NAME wiremock_module_smoke COMMAND ${TARGET_OUT})
