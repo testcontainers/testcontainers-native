@@ -6,12 +6,14 @@ set(VANILLA_OUT demo_vanilla.out)
 
 include_directories(${testcontainers-c_SOURCE_DIR})
 
+# Vanilla Demo for WireMock
 add_executable(${VANILLA_OUT} wiremock_demo_vanilla.c)
 add_dependencies(${VANILLA_OUT} testcontainers-c-shim)
 target_link_libraries(${VANILLA_OUT} PRIVATE testcontainers-c)
-add_test(NAME vanilla_smoke COMMAND ${VANILLA_OUT} w
+add_test(NAME vanilla_smoke COMMAND ${VANILLA_OUT}
     WORKING_DIRECTORY ${testcontainers-c-wiremock-demo-c_SOURCE_DIR})
 
+# WireMock Module demo
 add_executable(${TARGET_OUT} wiremock_demo.c)
 add_dependencies(${VANILLA_OUT} testcontainers-c-shim)
 target_include_directories(${TARGET_OUT} PRIVATE ${testcontainers-c-wiremock_SOURCE_DIR})
