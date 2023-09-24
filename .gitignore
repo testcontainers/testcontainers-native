@@ -9,6 +9,7 @@ CMakeCache.txt
 *.pc
 **/Testing/Temporary/**
 DartConfiguration.tcl
+build/
 
 # Generated files
 testcontainers-c/testcontainers-c.h

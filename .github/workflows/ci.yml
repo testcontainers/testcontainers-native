@@ -12,7 +12,13 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3.5.3
 
-      - name: Configure CMake
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1.13
+        with:
+          # We need recent version with support for WORKING_DIRECTORY in add_test()
+          cmake-version: '3.27.6'
+
+      - name: Run CMake
         uses: threeal/cmake-action@v1.3.0
         with:
           run-build: true
