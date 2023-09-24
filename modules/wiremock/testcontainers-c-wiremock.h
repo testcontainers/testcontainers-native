@@ -13,6 +13,13 @@
 
 #define WM_GOSTRING(X) (GoString) {X, strlen(X)}
 
+struct WireMock_Mapping
+{
+    GoInt responseCode;
+    char* json;
+    char* error;
+};
+
 /// @brief Creates a container request with a default image, exposed port and init logic
 /// @return Container request ID
 GoInt tc_wm_new_default_container();
@@ -27,5 +34,10 @@ GoInt tc_wm_new_container(char* image);
 /// @param filePath Source file in the local filesystem
 /// @param destination Destination file, relative to the mappings dir. Extension is optional
 void tc_wm_with_mapping(GoInt requestID, char* filePath, char* destination);
+
+/// @brief Gets WireMock mappings using Admin API
+/// @param containerId Container ID
+/// @return Mapping information if response code is 200, error details otherwise
+struct WireMock_Mapping tc_wm_get_mappings(GoInt containerId);
 
 #endif

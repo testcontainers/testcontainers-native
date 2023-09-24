@@ -25,6 +25,15 @@ int main() {
         return -1;
     }
 
+    printf("Getting WireMock stub API mappings to test initialization\n");
+    struct WireMock_Mapping mapping = tc_wm_get_mappings(containerId);
+    if (mapping.responseCode != 200) {
+        printf("Failed to get WireMock mapping: %s\n", mapping.error);
+        return -1;
+    } else {
+        printf("WireMock Mapping:\n%s\n", mapping.json);
+    }
+
     printf("Sending HTTP request to the container\n");
     struct tc_send_http_get_return response = tc_send_http_get(containerId, 8080, GOSTRING("/hello"));
     if (response.r0 == -1) {

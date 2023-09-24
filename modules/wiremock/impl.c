@@ -29,3 +29,19 @@ void tc_wm_with_mapping(GoInt requestID, char* filePath, char* destination) {
     printf("DEBUG: %s to %s\n", filePath, dest_file);
     tc_with_file(requestID, filePath, dest_file); 
 };
+
+struct WireMock_Mapping tc_wm_get_mappings(GoInt containerId) {
+    struct tc_send_http_get_return response = tc_send_http_get(containerId, 8080, WM_GOSTRING("/__admin/mappings"));
+    if (response.r0 == -1) {
+        char errorMsg[8000] = "";
+        sprintf(errorMsg, "Failed to send HTTP request: %s\n", response.r2);
+        return (struct WireMock_Mapping) { -1, NULL, errorMsg};
+    }
+    if (response.r0 != 200) {
+        char errorMsg[8000] = "";
+        sprintf(errorMsg, "Received wrong response code: %d instead of %d\n%s\n%s\n", response.r0, 200, response.r1, response.r2);
+        return (struct WireMock_Mapping) { response.r0, NULL, errorMsg};
+    }
+
+    return (struct WireMock_Mapping) {response.r0, response.r1, NULL};
+};
