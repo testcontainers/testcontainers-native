@@ -109,9 +109,9 @@ func _GetURI(ctx context.Context, container testcontainers.Container, port int) 
 }
 
 //export tc_with_wait_for_http
-func tc_with_wait_for_http(requestID int, port int, url string) {
+func tc_with_wait_for_http(requestID int, port int, url *C.char) {
 	req := func(req *testcontainers.GenericContainerRequest) {
-		req.WaitingFor = wait.ForHTTP(url).WithPort(nat.Port(strconv.Itoa(port)))
+		req.WaitingFor = wait.ForHTTP(C.GoString(url)).WithPort(nat.Port(strconv.Itoa(port)))
 	}
 
 	registerCustomizer(requestID, req)
@@ -149,9 +149,9 @@ func registerCustomizer(requestID int, customizer testcontainers.CustomizeReques
 }
 
 //export tc_send_http_get
-func tc_send_http_get(containerID int, port int, endpoint string) (responseCode C.int, responseBody *C.char, errstr *C.char) {
+func tc_send_http_get(containerID int, port int, endpoint *C.char) (responseCode C.int, responseBody *C.char, errstr *C.char) {
 	container := *containers[containerID]
-	responseCodeVal, responseBodyStr, err := SendHttpRequest(http.MethodGet, container, port, endpoint, nil)
+	responseCodeVal, responseBodyStr, err := SendHttpRequest(http.MethodGet, container, port, C.GoString(endpoint), nil)
 	if err != nil {
 		return -1, nil, ToCString(err)
 	}

@@ -9,7 +9,7 @@ GoInt tc_wm_new_default_container() {
 GoInt tc_wm_new_container(char* image) {
     GoInt requestId = tc_new_container_request(image);
     tc_with_exposed_tcp_port(requestId, 8080);
-    tc_with_wait_for_http(requestId, 8080, WM_GOSTRING("/__admin/mappings"));
+    tc_with_wait_for_http(requestId, 8080, "/__admin/mappings");
     return requestId;
 };
 
@@ -31,7 +31,7 @@ void tc_wm_with_mapping(GoInt requestID, char* filePath, char* destination) {
 };
 
 struct WireMock_Mapping tc_wm_get_mappings(GoInt containerId) {
-    struct tc_send_http_get_return response = tc_send_http_get(containerId, 8080, WM_GOSTRING("/__admin/mappings"));
+    struct tc_send_http_get_return response = tc_send_http_get(containerId, 8080, "/__admin/mappings");
     if (response.r0 == -1) {
         char errorMsg[8000] = "";
         sprintf(errorMsg, "Failed to send HTTP request: %s\n", response.r2);

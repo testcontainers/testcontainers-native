@@ -2,8 +2,6 @@
 #include <string.h>
 #include "testcontainers-c-wiremock.h"
 
-#define GOSTRING(X) (GoString) {X, strlen(X)}
-
 int main() {
     printf("Using WireMock with the Testcontainers C binding:\n");
 
@@ -35,7 +33,7 @@ int main() {
     }
 
     printf("Sending HTTP request to the container\n");
-    struct tc_send_http_get_return response = tc_send_http_get(containerId, 8080, GOSTRING("/hello"));
+    struct tc_send_http_get_return response = tc_send_http_get(containerId, 8080, "/hello");
     if (response.r0 == -1) {
         printf("Failed to send HTTP request: %s\n", response.r2);
         return -1;

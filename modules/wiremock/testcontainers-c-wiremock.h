@@ -11,8 +11,6 @@
 #define WIREMOCK_MAPPINGS_DIR "/home/wiremock/mappings/"
 #define WIREMOCK_FILES_DIR "/home/wiremock/__files/"
 
-#define WM_GOSTRING(X) (GoString) {X, strlen(X)}
-
 struct WireMock_Mapping
 {
     GoInt responseCode;
