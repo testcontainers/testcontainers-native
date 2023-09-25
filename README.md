@@ -142,8 +142,10 @@ and linked to the consumer project.
 
 ### Available modules
 
-- Generic container aka DYI - embedded
-- [WireMock](./modules/wiremock/)
+- Generic container for DYI containers (embedded)
+  - [Demo](./demo/generic-container/)
+- [WireMock](./modules/wiremock/) - for API mocking and integration testing
+  - [Demo](./demo/wiremock/)
 
 ### Why modules?
 
@@ -207,6 +209,7 @@ You are welcome to contribute more modules in this or a standalone repository!
 
 ## Examples and Demos
 
+- [Using the generic Testcontainer C API](./demo/generic-container/)
 - [Using the WireMock module](./demo/wiremock/)
 
 ## Credits
