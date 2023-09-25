@@ -9,9 +9,7 @@
 > **WARNING**: This is a prototype.
 > There is a lot to do before it can be distributed and used in production,
 > see the GitHub Issues.
-> The plan is to build a proper distributable with a CMake proper structure,
-> have proper Cpp Unit integrations,
-> and have the library published to Conan.
+> The plan is to provide vcpkg and Conan packages, now it is an importable CMake project.
 > A feasible level of feature parity with Testcontainers Go is needed too,
 > hence a lot of wrapper coding.
 > Contributions are welcome!
@@ -19,9 +17,19 @@
 This is not a standalone [Testcontainers](https://testcontainers.org/) engine,
 but a C-style shared library adapter for native languages like C/C++, D, Lua, Swift, etc.
 It is a MVP SDK that can be later extended for the languages.
-
 The project is based on [Testcontainers for Go](https://golang.testcontainers.org/)
 which is one of the most powerful Testcontainers implementations.
+
+## Key Features
+
+- Minimum viable Testcontainers API functionality:
+  starting and terminating containers, passing files, exposing ports,
+  accessing container logs, etc.
+- Minimum HTTP client wrapper to simplify requests and assertions
+- [Testcontainers for Go](https://golang.testcontainers.org/) under the hood
+- Wrappers for native C types to minimize Golang conversion code on user side
+- Support for C and C++ projects. A fancy C++ wrapper is coming soon
+- Support for Modules, e.g. the [WireMock module](./modules/wiremock/)
 
 ## Quick Start
 
@@ -30,6 +38,8 @@ for deploying a [WireMock](https://wiremock.org/) API server,
 sends a simple HTTP request to this service,
 and verifies the response.
 We will not be using any C/C++ test framework for that.
+
+For a test framework framework example, see the [Google Test sample project](./demo/google-test/).
 
 ### Build the project
 
@@ -41,15 +51,9 @@ and its dependencies like Docker client libraries,
 and then to repackage it as shared library using `go build -buildmode=c-shared`.
 
 ```bash
-# Build project
 cmake .
 cmake --build .
-
-# Run embedded tests/demos
 ctest --output-on-failure
-
-## OPTIONAL - Install to the local system
-cmake --install ..
 ```
 
 **Disclaimer:** The commands above may explode, proper coverage on different platforms is yet to be implemented.
@@ -61,15 +65,20 @@ Any patches and issue reports are welcome!
 
 You can use a C/C++ framework for writing tests, e.g. CTest or CppUnit.
 Or you can just have a small launcher as presented below.
-Here is a code of the [WireMock demo](./demo/wiremock/) that only uses the library
+Below there is a code of the [WireMock demo](./demo/wiremock/) that only uses the library
 but not a specialized WireMock module (see below).
+
+Note that in this example does not terminate the container,
+because Testcontainers for Go injects [Moby Ryuk](https://github.com/testcontainers/moby-ryuk)
+sidecar container by default to automatically terminate the instance.
+We also do not worry about memory leaks too much, because the process will exit anyway.
+
+#### main.c
 
 <details>
 <summary>
 main.c - Show me the Code
 </summary>
-
-### main.c
 
 ```c
 #include <stdio.h>
@@ -115,6 +124,17 @@ int main() {
 This is how a very simple run without a test framework may look like.
 
 [![Sample Output](./demo/wiremock/sample_output.png)](./demo/wiremock/)
+
+### Installing the library
+
+It is adviced to include CMake as a dependant module for now.
+If you like living dangerously, until proper vcpkg and Conan packages are ready,
+you can optionally install the library to your system:
+
+```bash
+# NOT RECOMMENDED
+cmake --install ..
+```
 
 ## Documentation
 
@@ -184,7 +204,6 @@ Show me the Code
 #include "testcontainers-c.h"
 
 #define DEFAULT_IMAGE "wiremock/wiremock:3.1.0-1"
-#define GOSTRING(X) (GoString) {X, strlen(X)}
 
 int main() {
     printf("Using WireMock with the Testcontainers C binding:\n");
@@ -192,7 +211,7 @@ int main() {
     printf("Creating new container: %s\n", DEFAULT_IMAGE);
     int requestId = tc_new_container_request(DEFAULT_IMAGE);
     tc_with_exposed_tcp_port(requestId, 8080);
-    tc_with_wait_for_http(requestId, 8080, GOSTRING("/__admin/mappings"));
+    tc_with_wait_for_http(requestId, 8080, "/__admin/mappings");
     tc_with_file(requestId, "test_data/hello.json", "/home/wiremock/mappings/hello.json");
     struct tc_run_container_return ret = tc_run_container(requestId);
 
