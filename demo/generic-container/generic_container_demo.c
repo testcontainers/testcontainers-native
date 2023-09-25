@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 #include "testcontainers-c.h"
 
 #define DEFAULT_IMAGE "wiremock/wiremock:3.0.1-1"

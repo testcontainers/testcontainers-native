@@ -122,7 +122,11 @@ Coming soon: guidelines, specs and code documentation. Check out the examples fo
 
 ## Usage in C/C++
 
-See [the examples and demos](./demo/)
+- [Using the generic Testcontainer C API](./demo/generic-container/)
+- [Using Testcontainers C in Google Test (C++)](./demo/google-test/)
+- [Using the WireMock module](./demo/wiremock/)
+
+See [the examples and demos](./demo/) for more examples.
 
 ## Usage in other languages
 
@@ -205,11 +209,6 @@ You are welcome to contribute more modules in this or a standalone repository!
 > **NOTE:** Some modules are stored in this repository for demo and prototyping purposes.
 > If you develop new modules, once `vcpkg` or `Conan` packaging is implemented for Testcontainers C,
 > you might want to develop your module in a standalone repository instead.
-
-## Examples and Demos
-
-- [Using the generic Testcontainer C API](./demo/generic-container/)
-- [Using the WireMock module](./demo/wiremock/)
 
 ## Credits
 
