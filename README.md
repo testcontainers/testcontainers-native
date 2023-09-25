@@ -2,7 +2,7 @@
 
 <p align="center">
     <!--<a href="https://wiremock.org" target="_blank">-->
-        <img width="512px" src="docs/images/logo/logo_testcontainers_c_wide.png" alt="Testcontainers for C Logo"/>
+        <img width="512px" src="docs/images/logo/logo_testcontainers_c_wide.png" alt="Testcontainers for C/C++ Logo"/>
     <!--</a>-->
 </p>
 
