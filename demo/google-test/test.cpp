@@ -27,8 +27,8 @@ protected:
     };
 
     void TearDown() override {
-        // Code here will be called immediately after each test (right
-        // before the destructor).
+        char* error = tc_terminate_container(containerId);
+        ASSERT_EQ(error, nullptr) << "Failed to terminate the container after the test: " << error;
     };
 
     int containerId;

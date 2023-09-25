@@ -69,6 +69,13 @@ func _RunContainer(requestID int) (id int, ok bool, err error) {
 	return containerId, true, nil
 }
 
+//export tc_terminate_container
+func tc_terminate_container(containerID int) *C.char {
+	ctx := context.Background()
+	container := *containers[containerID]
+	return ToCString(container.Terminate(ctx))
+}
+
 //export tc_get_container_log
 func tc_get_container_log(containerID int) (log *C.char) {
 	ctx := context.Background()
@@ -187,7 +194,10 @@ func SendHttpRequest(httpMethod string, container testcontainers.Container, port
 }
 
 func ToCString(err error) *C.char {
-	return C.CString(fmt.Sprintf("%v", err))
+	if err != nil {
+		return C.CString(fmt.Sprintf("%v", err))
+	}
+	return nil
 }
 
 func main() {}
