@@ -1,5 +1,6 @@
 package main
 
+// typedef const char cchar_t;
 import "C"
 
 import (
@@ -21,7 +22,7 @@ var customizers map[int][]*testcontainers.CustomizeRequestOption
 // Creates Unique container request and returns its ID
 //
 //export tc_new_container_request
-func tc_new_container_request(image *C.char) (id int) {
+func tc_new_container_request(image *C.cchar_t) (id int) {
 	req := testcontainers.ContainerRequest{
 		Image: C.GoString(image),
 		Cmd:   []string{""},
@@ -109,7 +110,7 @@ func _GetURI(ctx context.Context, container testcontainers.Container, port int) 
 }
 
 //export tc_with_wait_for_http
-func tc_with_wait_for_http(requestID int, port int, url *C.char) {
+func tc_with_wait_for_http(requestID int, port int, url *C.cchar_t) {
 	req := func(req *testcontainers.GenericContainerRequest) {
 		req.WaitingFor = wait.ForHTTP(C.GoString(url)).WithPort(nat.Port(strconv.Itoa(port)))
 	}
@@ -118,7 +119,7 @@ func tc_with_wait_for_http(requestID int, port int, url *C.char) {
 }
 
 //export tc_with_file
-func tc_with_file(requestID int, filePath *C.char, targetPath *C.char) {
+func tc_with_file(requestID int, filePath *C.cchar_t, targetPath *C.cchar_t) {
 	req := func(req *testcontainers.GenericContainerRequest) {
 		cfgFile := testcontainers.ContainerFile{
 			HostFilePath:      C.GoString(filePath),
@@ -149,7 +150,7 @@ func registerCustomizer(requestID int, customizer testcontainers.CustomizeReques
 }
 
 //export tc_send_http_get
-func tc_send_http_get(containerID int, port int, endpoint *C.char) (responseCode C.int, responseBody *C.char, errstr *C.char) {
+func tc_send_http_get(containerID int, port int, endpoint *C.cchar_t) (responseCode C.int, responseBody *C.char, errstr *C.char) {
 	container := *containers[containerID]
 	responseCodeVal, responseBodyStr, err := SendHttpRequest(http.MethodGet, container, port, C.GoString(endpoint), nil)
 	if err != nil {
