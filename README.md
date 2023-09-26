@@ -6,19 +6,25 @@
     <!--</a>-->
 </p>
 
+[![Slack: testcontainers-c on slacktestcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94c-brightgreen?style=flat&logo=slack)](http://slack.testcontainers.org/)
+[![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/oleg-nenashev/testcontainers-c)](https://github.com/oleg-nenashev/testcontainers-c/releases)
+
 > **WARNING**: This is a prototype.
 > There is a lot to do before it can be distributed and used in production,
 > see the GitHub Issues.
 > The plan is to provide vcpkg and Conan packages, now it is an importable CMake project.
 > A feasible level of feature parity with Testcontainers Go is needed too,
 > hence a lot of wrapper coding.
-> Contributions are welcome!
 
 This is not a standalone [Testcontainers](https://testcontainers.org/) engine,
 but a C-style shared library adapter for native languages like C/C++, D, Lua, Swift, etc.
 It is a MVP SDK that can be later extended for the languages.
 The project is based on [Testcontainers for Go](https://golang.testcontainers.org/)
 which is one of the most powerful Testcontainers implementations.
+
+Contributions and feedback are welcome!
+Also join the `#testcontainers-c` channel on the [Testcontainers Slack](http://slack.testcontainers.org/).
 
 ## Key Features
 
