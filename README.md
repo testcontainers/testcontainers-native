@@ -1,4 +1,4 @@
-# Testcontainers for C/C+ and other native languages
+# Testcontainers for C/C++ and other native languages
 
 <p align="center">
     <!--<a href="https://wiremock.org" target="_blank">-->
