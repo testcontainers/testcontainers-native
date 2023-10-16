@@ -13,13 +13,13 @@
 > **WARNING**: This is a prototype.
 > There is a lot to do before it can be distributed and used in production,
 > see the GitHub Issues.
-> The plan is to provide vcpkg and Conan packages, now it is an importable CMake project.
+> The plan is to provide vcpkg and Conan packages; now it is an importable CMake project.
 > A feasible level of feature parity with Testcontainers Go is needed too,
 > hence a lot of wrapper coding.
 
 This is not a standalone [Testcontainers](https://testcontainers.org/) engine,
 but a C-style shared library adapter for native languages like C/C++, D, Lua, Swift, etc.
-It is a MVP SDK that can be later extended for the languages.
+It is an MVP SDK that can be later extended for the languages.
 The project is based on [Testcontainers for Go](https://golang.testcontainers.org/)
 which is one of the most powerful Testcontainers implementations.
 
@@ -33,7 +33,7 @@ Also join the `#testcontainers-c` channel on the [Testcontainers Slack](http://s
   accessing container logs, etc.
 - Minimum HTTP client wrapper to simplify requests and assertions
 - [Testcontainers for Go](https://golang.testcontainers.org/) under the hood
-- Wrappers for native C types to minimize Golang conversion code on user side
+- Wrappers for native C types to minimize Golang conversion code on the user side
 - Support for C and C++ projects. A fancy C++ wrapper is coming soon
 - Support for Modules, e.g. the [WireMock module](./modules/wiremock/)
 
@@ -51,10 +51,10 @@ For a test framework framework example, see the [Google Test sample project](./d
 
 Right now you have to check out and build the project to use it locally.
 You will need CMake, Docker, Golang 1.19++, and recent C/C++ build tools.
-First build may take a while, because the build process will need to download
+The first build may take a while because the build process will need to download
 [Testcontainers for Go](https://github.com/testcontainers/testcontainers-go)
 and its dependencies like Docker client libraries,
-and then to repackage it as shared library using `go build -buildmode=c-shared`.
+and then repackage it as a shared library using `go build -buildmode=c-shared`.
 
 ```bash
 cmake .
@@ -74,7 +74,7 @@ Or you can just have a small launcher as presented below.
 Below there is a code of the [WireMock demo](./demo/wiremock/) that only uses the library
 but not a specialized WireMock module (see below).
 
-Note that in this example does not terminate the container,
+Note that in this example, we do not terminate the container,
 because Testcontainers for Go injects [Moby Ryuk](https://github.com/testcontainers/moby-ryuk)
 sidecar container by default to automatically terminate the instance.
 We also do not worry about memory leaks too much, because the process will exit anyway.
@@ -127,14 +127,14 @@ int main() {
 
 ### Sample output
 
-This is how a very simple run without a test framework may look like.
+This is what a very simple run without a test framework may look like.
 
 [![Sample Output](./demo/wiremock/sample_output.png)](./demo/wiremock/)
 
 ### Installing the library
 
-It is adviced to include CMake as a dependant module for now.
-If you like living dangerously, until proper vcpkg and Conan packages are ready,
+It is advised to include CMake as a dependent module for now.
+If you like living dangerously until proper vcpkg and Conan packages are ready,
 you can optionally install the library to your system:
 
 ```bash
@@ -163,7 +163,7 @@ Feel free to contribute examples or SDKs for the languages!
 
 ## Modules
 
-As for other Testcontainers implementation, Testcontainers for C/C++ allows writing
+As for other Testcontainers implementations, Testcontainers for C/C++ allow writing
 extensions that extend the SDK and APIs to make usage of a particular service provider
 easier.
 The expectation is that the modules are implemented in a separate dynamic library
@@ -180,7 +180,7 @@ and linked to the consumer project.
 
 Modules help to simplify test development and maintenance by encapsulating
 domain-specific logic of a target container.
-For example, the WireMock module adds API to simplify configuration of the container.
+For example, the WireMock module adds an API to simplify the configuration of the container.
 You can also use modules to create specific asserts for the container,
 or even attach full-fledged API clients for fine-grain testing.
 
