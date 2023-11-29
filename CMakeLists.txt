@@ -7,4 +7,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}/testcontainers-c)
 
 add_subdirectory(testcontainers-c)
 add_subdirectory(modules)
-add_subdirectory(demo)
+if(NOT DEFINED SKIP_DEMOS)
+    add_subdirectory(demo)
+endif()

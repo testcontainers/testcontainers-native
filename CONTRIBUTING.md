@@ -18,6 +18,23 @@ To propose a code patch, just submit a pull request to the repository.
 No need to create a GitHub issue if you want to suggest a simple patch,
 pull requests are more than enough for it.
 
+## Building the project
+
+You need CMake 3.16.3 and Golang 1.19+.
+At the moment there are not so many configuration flags, so the build is straightforward:
+
+```shell
+cmake .
+cmake --build .
+ctest --output-on-failure
+```
+
+To skip the demo builds and tests, use the `SKIP_DEMOS` variable:
+
+```shell
+cmake -DSKIP_DEMOS=true .
+```
+
 ## Codestyle
 
 ### Public APIs
