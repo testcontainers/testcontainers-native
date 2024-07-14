@@ -10,12 +10,10 @@
 [![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/oleg-nenashev/testcontainers-c)](https://github.com/oleg-nenashev/testcontainers-c/releases)
 
-> **WARNING**: This is a prototype.
-> There is a lot to do before it can be distributed and used in production,
-> see the GitHub Issues.
-> The plan is to provide vcpkg and Conan packages; now it is an importable CMake project.
-> A feasible level of feature parity with Testcontainers Go is needed too,
-> hence a lot of wrapper coding.
+!!! warning
+    This is a prototype.
+    There is a lot to do before it can be distributed and used in production, see the GitHub Issues
+    and the [project roadmap](./ROADMAP.md)
 
 This is not a standalone [Testcontainers](https://testcontainers.org/) engine,
 but a C-style shared library adapter for native languages like C/C++, D, Lua, Swift, etc.
@@ -144,20 +142,18 @@ cmake --install ..
 
 ## Documentation
 
-Coming soon: guidelines, specs and code documentation. Check out the examples for now.
+### Using in C/C++/Swift projects
 
-## Usage in C/C++
+- [C projects](./docs/c/README.md)
+- [C++ projects](./docs/cpp/README.md)
+- [Swift projects](./docs/swift/README.md)
 
-- [Using the generic Testcontainer C API](./demo/generic-container/)
-- [Using Testcontainers C in Google Test (C++)](./demo/google-test/)
-- [Using the WireMock module](./demo/wiremock/)
+See [the examples and demos](./demo/README.md) for more examples.
 
-See [the examples and demos](./demo/) for more examples.
-
-## Usage in other languages
+### Using in other languages
 
 TL;DR: You get the C header file, a shared library object or a DLL file from the
-[Testcontainers C](./testcontainers-c/) module,
+[Testcontainers C](./docs/c/README.md) module,
 Then, you know the drill.
 Feel free to contribute examples or SDKs for the languages!
 
