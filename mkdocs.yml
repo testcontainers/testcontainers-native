@@ -1,0 +1,110 @@
+site_name: Testcontainers for C/C++
+site_description: >-
+  Testcontainers for C/C++ is not a standalone Testcontainers engine,
+  but a C-style shared library adapter for native languages
+  like C/C++, D, Lua, Swift, etc.
+  The project is based on Testcontainers for Go which is one of the most powerful Testcontainers implementations.
+copyright: >-
+  Copyright &copy; 2024 - Oleg Nenashev and all contributors.
+repo_url: https://github.com/testcontainers/testcontainers-c
+repo_name: GitHub Repo
+edit_uri: edit/main/
+site_url: https://testcontainers.github.io/testcontainers-c
+
+# Build
+site_dir: _site
+docs_dir: .
+exclude_docs: |
+  /_deps/**
+  !.devcontainer
+
+nav:
+  - Documentation:
+    - Overview: README.md
+    - Under the Hood: docs/architecture/README.md
+    - Usage in C: docs/c/README.md
+    - Usage in C++: docs/cpp/README.md
+    - Usage in Swift: docs/swift/README.md
+    - Demos:
+      - All Demos: demo/README.md
+      - Generic Container: demo/generic-container/README.md  
+      - WireMock Module: demo/wiremock/README.md
+  - Modules:
+    - Overview: modules/README.md
+    - Embedded Modules:
+      - WireMock: modules/wiremock/README.md
+  - Roadmap: ROADMAP.md
+  - Contributing: CONTRIBUTING.md
+
+plugins:
+  - search
+  - autorefs
+  - macros:
+      include_dir: .
+      on_error_fail: true
+      on_undefined: strict
+  - mkdocs-pdf
+  - social
+  - same-dir
+  - redirects:
+      redirect_maps:
+
+# Markdown
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: '#'
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+# Theme
+theme:
+  name: material
+  highlightjs: true
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - content.tabs.link
+    - content.tooltips
+    # - header.autohide
+    # - navigation.expand
+    - navigation.footer
+    # NOT compatible qith toc.integrate
+    # - navigation.indexes
+    - navigation.path
+    # - navigation.instant
+    # - navigation.instant.prefetch
+    # - navigation.instant.progress
+    # - navigation.prune
+    - navigation.sections
+    - navigation.expand
+    - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    - toc.integrate
+  font:
+    text: DM Sans
+    code: Roboto Mono
+  favicon: docs/images/logo/logo_testcontainers_c_square.png
+  logo: docs/images/logo/logo_testcontainers_c_square.png
+  icon:
+    repo: fontawesome/brands/github
