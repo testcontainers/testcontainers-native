@@ -25,3 +25,7 @@ testcontainers-c/testcontainers.h
 *.dll
 *.so.0.0.1
 *.dll.0.0.1
+
+## MkDocs
+/.cache
+/_site

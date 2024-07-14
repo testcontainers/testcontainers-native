@@ -10,12 +10,10 @@
 [![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/oleg-nenashev/testcontainers-c)](https://github.com/oleg-nenashev/testcontainers-c/releases)
 
-> **WARNING**: This is a prototype.
-> There is a lot to do before it can be distributed and used in production,
-> see the GitHub Issues.
-> The plan is to provide vcpkg and Conan packages; now it is an importable CMake project.
-> A feasible level of feature parity with Testcontainers Go is needed too,
-> hence a lot of wrapper coding.
+!!! warning
+    This is a prototype.
+    There is a lot to do before it can be distributed and used in production, see the GitHub Issues
+    and the [project roadmap](./ROADMAP.md)
 
 This is not a standalone [Testcontainers](https://testcontainers.org/) engine,
 but a C-style shared library adapter for native languages like C/C++, D, Lua, Swift, etc.
@@ -34,8 +32,9 @@ Also join the `#testcontainers-c` channel on the [Testcontainers Slack](http://s
 - Minimum HTTP client wrapper to simplify requests and assertions
 - [Testcontainers for Go](https://golang.testcontainers.org/) under the hood
 - Wrappers for native C types to minimize Golang conversion code on the user side
-- Support for C and C++ projects. A fancy C++ wrapper is coming soon
-- Support for Modules, e.g. the [WireMock module](./modules/wiremock/)
+- Support for [C](./docs/c/README.md) and [C++](./docs/cpp/README.md) projects.
+  A fancy C++ wrapper is coming soon
+- Support for [Modules](./modules/README.md)
 
 ## Quick Start
 
@@ -144,96 +143,20 @@ cmake --install ..
 
 ## Documentation
 
-Coming soon: guidelines, specs and code documentation. Check out the examples for now.
+### Using in C/C++/Swift projects
 
-## Usage in C/C++
+- [C projects](./docs/c/README.md)
+- [C++ projects](./docs/cpp/README.md)
+- [Swift projects](./docs/swift/README.md)
 
-- [Using the generic Testcontainer C API](./demo/generic-container/)
-- [Using Testcontainers C in Google Test (C++)](./demo/google-test/)
-- [Using the WireMock module](./demo/wiremock/)
+See [the examples and demos](./demo/README.md) for more examples.
 
-See [the examples and demos](./demo/) for more examples.
-
-## Usage in other languages
+### Using in other languages
 
 TL;DR: You get the C header file, a shared library object or a DLL file from the
-[Testcontainers C](./testcontainers-c/) module,
+[Testcontainers C](./docs/c/README.md) module,
 Then, you know the drill.
 Feel free to contribute examples or SDKs for the languages!
-
-## Modules
-
-As for other Testcontainers implementations, Testcontainers for C/C++ allow writing
-extensions that extend the SDK and APIs to make usage of a particular service provider
-easier.
-The expectation is that the modules are implemented in a separate dynamic library
-and linked to the consumer project.
-
-### Available modules
-
-- Generic container for DYI containers (embedded)
-  - [Demo](./demo/generic-container/)
-- [WireMock](./modules/wiremock/) - for API mocking and integration testing
-  - [Demo](./demo/wiremock/)
-
-### Why modules?
-
-Modules help to simplify test development and maintenance by encapsulating
-domain-specific logic of a target container.
-For example, the WireMock module adds an API to simplify the configuration of the container.
-You can also use modules to create specific asserts for the container,
-or even attach full-fledged API clients for fine-grain testing.
-
-Initializing WireMock with the module:
-
-```c
-#include "testcontainers-c-wiremock.h"
-
-int main() {
-    printf("Creating new container: %s\n", DEFAULT_WIREMOCK_IMAGE);
-    int requestId = tc_wm_new_default_container();
-    tc_wm_with_mapping(requestId, "test_data/hello.json", "hello");
-    struct tc_run_container_return ret = tc_run_container(requestId);
-
-    // ...
-}
-```
-
-The same initialization without a module (using the "Generic Container" API):
-
-<details>
-<summary>
-Show me the Code
-</summary>
-
-```c
-#include "testcontainers-c.h"
-
-#define DEFAULT_IMAGE "wiremock/wiremock:3.1.0-1"
-
-int main() {
-    printf("Using WireMock with the Testcontainers C binding:\n");
-
-    printf("Creating new container: %s\n", DEFAULT_IMAGE);
-    int requestId = tc_new_container_request(DEFAULT_IMAGE);
-    tc_with_exposed_tcp_port(requestId, 8080);
-    tc_with_wait_for_http(requestId, 8080, "/__admin/mappings");
-    tc_with_file(requestId, "test_data/hello.json", "/home/wiremock/mappings/hello.json");
-    struct tc_run_container_return ret = tc_run_container(requestId);
-
-    // ...
-}
-```
-
-</details>
-
-### Creating new modules
-
-You are welcome to contribute more modules in this or a standalone repository!
-
-> **NOTE:** Some modules are stored in this repository for demo and prototyping purposes.
-> If you develop new modules, once `vcpkg` or `Conan` packaging is implemented for Testcontainers C,
-> you might want to develop your module in a standalone repository instead.
 
 ## Credits
 
