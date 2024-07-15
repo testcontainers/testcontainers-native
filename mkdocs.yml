@@ -1,8 +1,7 @@
 site_name: Testcontainers for C/C++
 site_description: >-
   Testcontainers for C/C++ is not a standalone Testcontainers engine,
-  but a C-style shared library adapter for native languages
-  like C/C++, D, Lua, Swift, etc.
+  but a C-style shared library adapter for C/C++, Swift, and other native projects.
   The project is based on Testcontainers for Go which is one of the most powerful Testcontainers implementations.
 copyright: >-
   Copyright &copy; 2024 - Oleg Nenashev and all contributors.
@@ -21,6 +20,7 @@ exclude_docs: |
 nav:
   - Documentation:
     - Overview: README.md
+    - Getting Started: docs/getting-started.md
     - Under the Hood: docs/architecture/README.md
     - Usage in C: docs/c/README.md
     - Usage in C++: docs/cpp/README.md
