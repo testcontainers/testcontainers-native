@@ -4,7 +4,7 @@
   <img width="512px" src="docs/images/logo/logo_testcontainers_c_wide.png" alt="Testcontainers for C/C++ Logo"/>
 </p>
 
-[![Slack: testcontainers-c on slacktestcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94c-brightgreen?style=flat&logo=slack)](http://slack.testcontainers.org/)
+[![Slack: testcontainers-c on slack.testcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94c-brightgreen?style=flat&logo=slack)](http://slack.testcontainers.org/)
 [![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/oleg-nenashev/testcontainers-c)](https://github.com/oleg-nenashev/testcontainers-c/releases)
 
