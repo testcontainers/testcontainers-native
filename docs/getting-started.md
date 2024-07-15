@@ -90,4 +90,4 @@ int main() {
 
 This is what a very simple run without a test framework may look like.
 
-[![Sample Output](./demo/wiremock/sample_output.png)](../demo/wiremock/README.md)
+[![Sample Output](../demo/wiremock/sample_output.png)](../demo/wiremock/README.md)
