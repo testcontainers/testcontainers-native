@@ -1,7 +1,7 @@
-# Testcontainers for C/C++ and other native languages
+# Testcontainers for C/C++/Swift and other native languages
 
 <p align="center">
-  <img width="512px" src="docs/images/logo/logo_testcontainers_c_wide.png" alt="Testcontainers for C/C++ Logo"/>
+  <img width="512px" src="docs/images/logo/logo_testcontainers_native_wide.png" alt="Testcontainers Native Logo"/>
 </p>
 
 [![Slack: testcontainers-c on slack.testcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94c-brightgreen?style=flat&logo=slack)](http://slack.testcontainers.org/)
@@ -24,14 +24,14 @@ Also join the `#testcontainers-c` channel on the [Testcontainers Slack](http://s
 
 ## Key Features
 
+- _Testcontainers for C/C++_ - a shared library and C-style headers that can be used in native projects
+- Support for [C](./docs/c/README.md), [C++](./docs/cpp/README.md), [Swift](./docs/swift/README.md) and other native projects.
 - Minimum viable Testcontainers API functionality:
   starting and terminating containers, passing files, exposing ports,
   accessing container logs, etc.
 - Minimum HTTP client wrapper to simplify requests and assertions
 - [Testcontainers for Go](https://golang.testcontainers.org/) under the hood, with all its reporting and resource management capabilities.
   Memory might leak a lot in the current versions, but we do not want containers to leak :)
-- Support for [C](./docs/c/README.md), [C++](./docs/cpp/README.md), [Swift](./docs/swift/README.md) and other native projects.
-- C-style header file for the library. A fancy C++ wrapper is coming soon
 - Support for [Testcontainers Modules](./modules/README.md)
 
 This is what a very simple run without a test framework may look like.
