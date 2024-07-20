@@ -1,4 +1,4 @@
-# Testcontainers for C/C++ and other native languages
+# Testcontainers for C/C++/Swift and other native languages
 
 <p align="center">
   <img width="512px" src="docs/images/logo/logo_testcontainers_native_wide.png" alt="Testcontainers Native Logo"/>
