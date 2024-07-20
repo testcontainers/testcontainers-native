@@ -36,6 +36,7 @@ nav:
       - WireMock: modules/wiremock/README.md
   - Contributing: CONTRIBUTING.md
   - Resources:
+    - Release Notes: docs/changelog.md
     - Roadmap: ROADMAP.md
     - Support: docs/SUPPORT.md
     - Security: docs/SECURITY.md
@@ -52,6 +53,18 @@ plugins:
   - same-dir
   - redirects:
       redirect_maps:
+  - mkdocstrings:
+      default_handler: python
+      enable_inventory: true
+      handlers:
+        python:
+          paths: [src]
+  - mkdocs_github_changelog:
+      token: !ENV GITHUB_TOKEN
+      release_template: <jinja2 str>
+      match: 'v[0-9+].[0-9+].[0-9]+'
+      autoprocess: true
+      enabled: true
 
 # Markdown
 markdown_extensions:
