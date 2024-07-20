@@ -8,6 +8,6 @@ Please do **NOT** use public GitHub Issues for reporting vulnerabilities.
 
 ## Bug Bounty
 
-The Testcontainers for C/C++ project is not a part of the official Testcontainers bug bounty program and,
+The Testcontainers Native project is not a part of the official Testcontainers bug bounty program and,
 as of now, of any other program.
 We will be happy to credit you in the public Security Advisory and on social media.

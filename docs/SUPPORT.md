@@ -1,4 +1,4 @@
-# Support for Testcontainers for C/C++
+# Support for Testcontainers Native
 
 [![Slack: testcontainers-c on slack.testcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94c-brightgreen?style=flat&logo=slack)](http://slack.testcontainers.org/)
 
@@ -29,7 +29,7 @@ Read More - [Security Policy](./SECURITY.md),
 
 The creator of this project, Oleg Nenashev,
 is [available for consulting projects](https://oleg-nenashev.github.io/oleg-nenashev/consulting/) in the areas of developer tools,
-including Testcontainers for C/C++.
+including Testcontainers Native and adapters for C/C++.
 Development of this project will continue regardless of commercial contracts,
 but of course your support can help the project to move forward.
 [GitHub Sponsorships](https://github.com/sponsors/oleg-nenashev) will be appreciated too.

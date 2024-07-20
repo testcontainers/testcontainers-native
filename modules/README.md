@@ -1,6 +1,6 @@
-# Testcontainers for C/C++. Modules
+# Testcontainers Native. Modules
 
-As for other Testcontainers implementations, Testcontainers for C/C++ allow writing
+As for other Testcontainers implementations, Testcontainers Native allows writing
 extensions that extend the SDK and APIs to make usage of a particular service provider
 easier.
 The expectation is that the modules are implemented in a separate dynamic library

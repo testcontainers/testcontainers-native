@@ -1,14 +1,15 @@
-site_name: Testcontainers for C/C++
+site_name: Testcontainers Native
 site_description: >-
-  Testcontainers for C/C++ is not a standalone Testcontainers engine,
-  but a C-style shared library adapter for C/C++, Swift, and other native projects.
+  Testcontainers for C/C++/Swift and other native projects.
+  It is not a standalone Testcontainers engine,
+  but a shared bridge library and language-specific adapters.
   The project is based on Testcontainers for Go which is one of the most powerful Testcontainers implementations.
 copyright: >-
   Copyright &copy; 2024 - Oleg Nenashev and all contributors.
-repo_url: https://github.com/testcontainers/testcontainers-c
+repo_url: https://github.com/testcontainers/testcontainers-native
 repo_name: GitHub Repo
 edit_uri: edit/main/
-site_url: https://testcontainers.github.io/testcontainers-c
+site_url: https://testcontainers.github.io/testcontainers-native
 
 # Build
 site_dir: _site
