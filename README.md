@@ -66,9 +66,24 @@ See [the examples and demos](./demo/README.md) for more examples.
 ### Using in other languages
 
 TL;DR: You get the C header file, a shared library object or a DLL file from the
-[Testcontainers for C](./docs/c/README.md) module,
-Then, you know the drill.
+[Testcontainers for C](./docs/c/README.md) module.
+Then, you can bind this native library in your project type.
+It allows supporting many other languages that support using
+native tooling via dynamically or statically linked libraries:
+
+![Languages that can leverage Testcontainers for C](docs/images/supported-languages.png)
+
+Disclaimer:
+The schema above shows the most popular languages for Embedded systems,
+based on the
+[IEEE Spectrum 2021 Report](https://spectrum.ieee.org/top-programming-languages-2021)
+and the [JetBrains 2021 Developer Ecosystem Survey for Embedded Software](https://www.jetbrains.com/lp/devecosystem-2021/embedded/).
+More native languages exist and can be supported by Testcontainers Native.
+
 Feel free to contribute examples or SDKs for the languages!
+See the [Swift Solution Page](./docs/swift/README.md) for examples.
+[Testcontainers Native Architecture](./docs/architecture/README.md)
+describes how it can be done in principle.
 
 ## Credits
 
