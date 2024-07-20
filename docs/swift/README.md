@@ -1,6 +1,6 @@
 # Using Testcontainers in Swift
 
-The Testcontainers C/C++ library is compatible with native languages, and that includes Swift. To use the library in Swift, a few extra steps must be followed in order for it to be useable.
+The Testcontainers for C/C++ library is compatible with native languages, and that includes Swift. To use the library in Swift, a few extra steps must be followed in order for it to be useable.
 
 ## Using the generic Testcontainer C API
 
