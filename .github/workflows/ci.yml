@@ -53,3 +53,6 @@ jobs:
             push: never
             runCmd: |
               mkdocs build
+            env: |
+              FULL_BUILD=true
+              GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
