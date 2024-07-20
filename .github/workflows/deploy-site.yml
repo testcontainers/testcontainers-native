@@ -47,7 +47,10 @@ jobs:
             push: always
             runCmd: |
               mkdocs build
-        
+            env: |
+              FULL_BUILD=true
+              GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+     
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v1
