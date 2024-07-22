@@ -4,7 +4,7 @@
   <img width="512px" src="docs/images/logo/logo_testcontainers_native_wide.png" alt="Testcontainers Native Logo"/>
 </p>
 
-[![Slack: testcontainers-c on slack.testcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94c-brightgreen?style=flat&logo=slack)](http://slack.testcontainers.org/)
+[![Slack: testcontainers-native on slack.testcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94native-brightgreen?style=flat&logo=slack)](http://slack.testcontainers.org/)
 [![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/oleg-nenashev/testcontainers-c)](https://github.com/oleg-nenashev/testcontainers-c/releases)
 
@@ -20,7 +20,7 @@ The project is based on [Testcontainers for Go](https://golang.testcontainers.or
 which is one of the most powerful Testcontainers implementations.
 
 Contributions and feedback are welcome!
-Also join the `#testcontainers-c` channel on the [Testcontainers Slack](http://slack.testcontainers.org/).
+Also join the `#testcontainers-native` channel on the [Testcontainers Slack](http://slack.testcontainers.org/).
 
 ## Key Features
 
@@ -103,6 +103,17 @@ Kudos to:
 - [Insu Jang](https://github.com/insujang) for
   [Implementing Kubernetes C++ Client Library using Go Client Library](https://insujang.github.io/2019-11-28/implementing-kubernetes-cpp-client-library)
 - Infinite number of StackOverflow contributors
+
+## Discuss
+
+For any questions and feedback,
+join the `#testcontainers-native` channel on the [Testcontainers Slack](http://slack.testcontainers.org/).
+
+## Support the Project
+
+The best support is investing some time in the project.
+All contributions are welcome, checkout the [Contributor Guide](./CONTRIBUTING.md).
+Of course, [GitHub Sponsorships](https://github.com/sponsors/oleg-nenashev) will be appreciated too.
 
 ## Read More
 

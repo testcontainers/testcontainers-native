@@ -1,6 +1,6 @@
 # Contributing
 
-[![Slack: testcontainers-c on slack.testcontainers.com](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94c-brightgreen?style=flat&logo=slack)](https://slack.testcontainers.org/)
+[![Slack: testcontainers-native on slack.testcontainers.com](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94native-brightgreen?style=flat&logo=slack)](https://slack.testcontainers.org/)
 [![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
 
 Contributions are welcome!
@@ -8,7 +8,7 @@ For any feedback and suggestions, use GitHub Issues.
 
 ## Community Slack
 
-We use the `#testcontainers-c` channel on [Testcontainers Slack](https://slack.testcontainers.com/).
+We use the `#testcontainers-native` channel on [Testcontainers Slack](https://slack.testcontainers.com/).
 Please join this channel if you want to discuss contributions/strategy/whatever.
 GitHub Issues are recommended for most of the proposals and bug reports though.
 
