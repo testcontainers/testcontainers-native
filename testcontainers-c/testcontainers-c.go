@@ -9,20 +9,16 @@ import (
 	"io"
 	"net/http"
 	"strconv"
-	"strings"
 
 	"github.com/docker/go-connections/nat"
 	"github.com/testcontainers/testcontainers-go"
 
-	uuid "github.com/google/uuid"
-	compose "github.com/testcontainers/testcontainers-go/modules/compose"
 	"github.com/testcontainers/testcontainers-go/wait"
 )
 
 var containerRequests []*testcontainers.ContainerRequest
 var containers []*testcontainers.Container
 var customizers map[int][]*testcontainers.CustomizeRequestOption
-var composeGroups []compose.ComposeStack
 
 // Creates Unique container request and returns its ID
 //
@@ -43,21 +39,6 @@ func tc_run_container(requestID int) (id int, ok bool, errstr *C.char) {
 		return -1, ok, ToCString(err)
 	}
 	return id, ok, nil
-}
-
-//export tc_new_docker_compose
-func tc_new_docker_compose(path *C.cchar_t) (id int, ok bool, errstr *C.char) {
-	composeFilePaths := []string{C.GoString(path)}
-	identifier := strings.ToLower(uuid.New().String())
-
-	compose := compose.NewLocalDockerCompose(composeFilePaths, identifier)
-	composeId := -1
-	if compose != nil {
-		// We register the container even if the run failed
-		composeGroups = append(composeGroups, &compose)
-		composeId = len(containers) - 1
-	}
-	return composeId, ok, nil
 }
 
 func _RunContainer(requestID int) (id int, ok bool, err error) {
@@ -93,14 +74,6 @@ func tc_terminate_container(containerID int) *C.char {
 	ctx := context.Background()
 	container := *containers[containerID]
 	return ToCString(container.Terminate(ctx))
-}
-
-//export tc_terminate_compose
-func tc_terminate_compose(composeID int) *C.char {
-	ctx := context.Background()
-	composeInstance := composeGroups[composeID]
-	res := composeInstance.Down(ctx, compose.RemoveOrphans(true), compose.RemoveImagesLocal)
-	return ToCString(res)
 }
 
 //export tc_get_container_log
