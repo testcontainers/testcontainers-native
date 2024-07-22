@@ -126,3 +126,14 @@ theme:
   icon:
     repo: fontawesome/brands/github
  
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/testcontainers/testcontainers-native
+      name: GitHub
+    - icon: fontawesome/brands/slack
+      link: http://slack.testcontainers.org/
+      name: Slack
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/testcontainers
+      name: Twitter

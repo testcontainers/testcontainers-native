@@ -1,5 +1,7 @@
 # Testcontainers Native. Roadmap
 
+[![Slack: testcontainers-native on slack.testcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94native-brightgreen?style=flat&logo=slack)](http://slack.testcontainers.org/)
+
 A full public roadmap is coming soon.
 See the [GitHub Issues](https://github.com/testcontainers/testcontainers-c/issues) and,
 in particular,
@@ -16,6 +18,11 @@ the pinned issues to learn about the key initiatives on the table.
 - Publish the project to common C/C++ package managers
   ([vcpkg](https://github.com/testcontainers/testcontainers-c/issues/2),
   [Conan](https://github.com/testcontainers/testcontainers-c/issues/3))
+
+## Discuss the Roadmap
+
+For any questions and feedback,
+join the `#testcontainers-native` channel on the [Testcontainers Slack](http://slack.testcontainers.org/).
 
 ## Contributing
 
