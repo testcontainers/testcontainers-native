@@ -12,7 +12,7 @@ For test framework framework examples, see the [demos](../demo/README.md).
 ## Build the Project
 
 Right now you have to check out and build the project to use it locally.
-You will need CMake, Docker, Golang 1.19++, and recent C/C++ build tools.
+You will need CMake, Docker, Golang 1.22.5+, and recent C/C++ build tools.
 The first build may take a while because the build process will need to download
 [Testcontainers for Go](https://github.com/testcontainers/testcontainers-go)
 and its dependencies like Docker client libraries,

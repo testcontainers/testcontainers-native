@@ -15,7 +15,7 @@ that automates pulling and building of CMake projects from GitHub,
 
 ### Building locally
 
-You need CMake 3.16.3 and Golang 1.19+.
+You need CMake 3.16.3 and Golang 1.22.5+.
 At the moment there are not so many configuration flags, so the build is straightforward:
 
 ```shell
@@ -50,7 +50,7 @@ Some frameworks like CTest provide wrappers for such executables.
 In such examples, you do not even have to worry about releasing the Testcontainers resources, because
 Testcontainers for Go has automatic resource de-provisioning.
 
-#### Initializing the Testcontainer
+#### Initializing the Testcontainers fixture
 
 ```c
 #include <stdio.h>

@@ -20,7 +20,7 @@ pull requests are more than enough for it.
 
 ## Building the project
 
-You need CMake 3.16.3 and Golang 1.19+.
+You need CMake 3.16.3 and Golang 1.22.5+.
 At the moment there are not so many configuration flags, so the build is straightforward:
 
 ```shell
