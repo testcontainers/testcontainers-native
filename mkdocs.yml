@@ -121,6 +121,19 @@ theme:
   font:
     text: DM Sans
     code: Roboto Mono
+  palette:
+    - scheme: default
+      media: "(prefers-color-scheme: light)"
+      primary: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      media: "(prefers-color-scheme: dark)"
+      primary: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   favicon: docs/images/logo/logo_testcontainers_c_square.png
   logo: docs/images/logo/logo_testcontainers_c_square.png
   icon:
