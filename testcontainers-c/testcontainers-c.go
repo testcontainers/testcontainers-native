@@ -30,7 +30,6 @@ var composeGroups []compose.ComposeStack
 func tc_new_container_request(image *C.cchar_t) (id int) {
 	req := testcontainers.ContainerRequest{
 		Image: C.GoString(image),
-		Cmd:   []string{""},
 	}
 
 	containerRequests = append(containerRequests, &req)
