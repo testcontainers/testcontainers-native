@@ -4,7 +4,7 @@
   <img width="512px" src="docs/images/logo/logo_testcontainers_native_wide.png" alt="Testcontainers Native Logo"/>
 </p>
 
-[![Slack: testcontainers-native on slack.testcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94native-brightgreen?style=flat&logo=slack)](http://slack.testcontainers.org/)
+[![Slack: testcontainers-native on slack.testcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94native-brightgreen?style=flat&logo=slack)](https://slack.testcontainers.org/)
 [![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/oleg-nenashev/testcontainers-c)](https://github.com/oleg-nenashev/testcontainers-c/releases)
 
@@ -20,7 +20,7 @@ The project is based on [Testcontainers for Go](https://golang.testcontainers.or
 which is one of the most powerful Testcontainers implementations.
 
 Contributions and feedback are welcome!
-Also join the `#testcontainers-native` channel on the [Testcontainers Slack](http://slack.testcontainers.org/).
+Also join the `#testcontainers-native` channel on the [Testcontainers Slack](https://slack.testcontainers.org/).
 
 ## Key Features
 
@@ -107,7 +107,7 @@ Kudos to:
 ## Discuss
 
 For any questions and feedback,
-join the `#testcontainers-native` channel on the [Testcontainers Slack](http://slack.testcontainers.org/).
+join the `#testcontainers-native` channel on the [Testcontainers Slack](https://slack.testcontainers.org/).
 
 ## Support the Project
 
