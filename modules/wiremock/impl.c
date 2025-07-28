@@ -1,4 +1,4 @@
-#include "testcontainers-c-wiremock.h"
+#include "testcontainers-native-wiremock.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -17,7 +17,7 @@ void tc_wm_with_mapping(GoInt requestID, char* filePath, char* destination) {
     char dest_file[128] = "";
     strcat(dest_file, WIREMOCK_MAPPINGS_DIR);
     strcat(dest_file, destination);
-    
+
     // Append extension if missing
     if(strlen(destination) > 5 && !strcmp(destination + strlen(destination) - 5, ".json")) {
         strcat(dest_file, ".json");
@@ -27,7 +27,7 @@ void tc_wm_with_mapping(GoInt requestID, char* filePath, char* destination) {
     }
 
     printf("DEBUG: %s to %s.\n", filePath, dest_file);
-    tc_with_file(requestID, filePath, dest_file); 
+    tc_with_file(requestID, filePath, dest_file);
 };
 
 struct WireMock_Mapping tc_wm_get_mappings(GoInt containerId) {

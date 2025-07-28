@@ -2,7 +2,7 @@
 # This is based on https://google.github.io/googletest/quickstart-cmake.html
 project(google-test-demo
     VERSION 0.0.1
-    DESCRIPTION "Demonstrates usage of Testcontainers C in Google Test")
+    DESCRIPTION "Demonstrates usage of Testcontainers Native in Google Test")
 
 set(TARGET_OUT ${PROJECT_NAME}.out)
 
@@ -21,8 +21,8 @@ enable_testing()
 file(COPY test_data DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_executable(${TARGET_OUT} test.cpp)
-add_dependencies(${TARGET_OUT} testcontainers-c-shim)
-target_link_libraries(${TARGET_OUT} PRIVATE testcontainers-c)
+add_dependencies(${TARGET_OUT} testcontainers-native-shim)
+target_link_libraries(${TARGET_OUT} PRIVATE testcontainers-native)
 target_link_libraries(${TARGET_OUT} PRIVATE GTest::gtest_main)
 
 include(GoogleTest)

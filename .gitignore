@@ -14,11 +14,11 @@ build/
 /lib
 
 # Generated files
-testcontainers-c/testcontainers-c.h
-testcontainers-c/testcontainers-c.so
-testcontainers-c/testcontainers.so
-testcontainers-c/testcontainers.dll
-testcontainers-c/testcontainers.h
+testcontainers-native/testcontainers-native.h
+testcontainers-native/testcontainers-native.so
+testcontainers-native/testcontainers.so
+testcontainers-native/testcontainers.dll
+testcontainers-native/testcontainers.h
 *.so
 *.out
 *.exe

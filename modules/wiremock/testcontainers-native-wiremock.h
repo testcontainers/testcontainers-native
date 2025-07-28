@@ -1,4 +1,4 @@
-#include "testcontainers-c.h"
+#include "testcontainers-native.h"
 
 #ifndef TESTCONTAINERS_WIREMOCK_H
 #define TESTCONTAINERS_WIREMOCK_H

@@ -3,7 +3,7 @@
 ## Reporting Security Issues
 
 You can submit any security issue or suspected vulnerability
-on [GitHub Security](https://github.com/testcontainers/testcontainers-c/security/advisories).
+on [GitHub Security](https://github.com/testcontainers/testcontainers-native/security/advisories).
 Please do **NOT** use public GitHub Issues for reporting vulnerabilities.
 
 ## Bug Bounty

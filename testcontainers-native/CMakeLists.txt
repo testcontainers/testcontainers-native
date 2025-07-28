@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.0)
-project(testcontainers-c VERSION 0.0.1
-    DESCRIPTION "Testcontainers C library")
+project(testcontainers-native VERSION 0.0.1
+    DESCRIPTION "Testcontainers Native library")
 
 include(GNUInstallDirs)
 
-set(SRCS testcontainers-c.go)
+set(SRCS testcontainers-native.go)
 
-set(TARGET testcontainers-c-shim)
-set(TARGET_LIB testcontainers-c.so)
-set(TARGET_HEADER testcontainers-c.h)
+set(TARGET testcontainers-native-shim)
+set(TARGET_LIB testcontainers-native.so)
+set(TARGET_HEADER testcontainers-native.h)
 
 add_custom_command(OUTPUT ${TARGET_LIB} ${TARGET_HEADER}
   DEPENDS ${SRCS}
@@ -16,16 +16,16 @@ add_custom_command(OUTPUT ${TARGET_LIB} ${TARGET_HEADER}
   COMMAND env GOPATH=${GOPATH} go build -buildmode=c-shared
   -o "${CMAKE_CURRENT_BINARY_DIR}/${TARGET_LIB}"
   ${CMAKE_GO_FLAGS} ${SRCS}
-  COMMENT "Building Testcontainers C shared library")
+  COMMENT "Building Testcontainers Native shared library")
 
 add_custom_target(${TARGET} DEPENDS ${TARGET_LIB} ${TARGET_HEADER})
 
 add_library(${PROJECT_NAME} SHARED IMPORTED GLOBAL)
 add_dependencies(${PROJECT_NAME} ${TARGET})
-set_target_properties(${PROJECT_NAME} PROPERTIES 
+set_target_properties(${PROJECT_NAME} PROPERTIES
     LINKER_LANGUAGE C
     VERSION ${PROJECT_VERSION}
-    PUBLIC_HEADER testcontainers-c.h
+    PUBLIC_HEADER testcontainers-native.h
     IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/${TARGET_LIB}
     INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_BINARY_DIR})
 

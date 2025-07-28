@@ -1,6 +1,6 @@
-# Using Testcontainers C in Google Test
+# Using Testcontainers Native in Google Test
 
-Demonstrates usage of Testcontainers C in [Google Test](https://github.com/google/googletest).
+Demonstrates usage of Testcontainers Native in [Google Test](https://github.com/google/googletest).
 See [test.cpp](./test.cpp) for the code.
 
 ## Run the demo
@@ -15,8 +15,8 @@ ctest --output-on-failure
 ## Sample output
 
 ```shell
-onenashev:~/testcontainers-c/demo/google-test$ ctest --output-on-failure
-Test project /home/onenashev/testcontainers-c/demo/google-test
+onenashev:~/testcontainers-native/demo/google-test$ ctest --output-on-failure
+Test project /home/onenashev/testcontainers-native/demo/google-test
     Start 1: WireMockTestContainer.HelloWorld
 1/5 Test #1: WireMockTestContainer.HelloWorld ......................   Passed    3.31 sec
     Start 2: WireMockTestContainer.HelloWorldFromResource

@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <string.h>
-#include "testcontainers-c-wiremock.h"
+#include "testcontainers-native-wiremock.h"
 
 int main() {
-    printf("Using WireMock with the Testcontainers C binding:\n");
+    printf("Using WireMock with the Testcontainers Native binding:\n");
 
     printf("Creating new container: %s\n", DEFAULT_WIREMOCK_IMAGE);
     int requestId = tc_wm_new_default_container();
@@ -45,4 +45,3 @@ int main() {
     printf("Server Response: HTTP-%d\n%s\n\n", response.r0, response.r1);
     return 0;
 }
-

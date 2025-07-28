@@ -1,4 +1,4 @@
-# Getting Started with Testcontainers for C/C++
+# Getting Started with Testcontainers Native
 
 In this section, we will build a demo C application that uses Testcontainers
 in a simple C application
@@ -51,12 +51,12 @@ main.c - Show me the Code
 ```c
 #include <stdio.h>
 #include <string.h>
-#include "testcontainers-c.h"
+#include "testcontainers-native.h"
 
 #define DEFAULT_IMAGE "wiremock/wiremock:3.0.1-1"
 
 int main() {
-    printf("Using WireMock with the Testcontainers C binding:\n");
+    printf("Using WireMock with the Testcontainers Native binding:\n");
 
     printf("Creating new container: %s\n", DEFAULT_IMAGE);
     int requestId = tc_new_container_request(DEFAULT_IMAGE);

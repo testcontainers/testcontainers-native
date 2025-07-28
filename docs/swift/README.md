@@ -1,8 +1,8 @@
 # Using Testcontainers in Swift
 
-The Testcontainers for C/C++ library is compatible with native languages, and that includes Swift. To use the library in Swift, a few extra steps must be followed in order for it to be useable.
+The Testcontainers Native library is compatible with native languages, and that includes Swift. To use the library in Swift, a few extra steps must be followed in order for it to be useable.
 
-## Using the generic Testcontainer C API
+## Using the generic Testcontainer Native API
 
 From the root of the repository:
 
@@ -11,11 +11,11 @@ cmake .
 cmake --build .
 ```
 
-The testcontainers-c header and library must be deployed to /usr manually:
+The testcontainers-native header and library must be deployed to /usr manually:
 
 ```bash
-sudo cp testcontainers-c/testcontainers-c.h /usr/include
-sudo cp testcontainers-c/testcontainers-c.so /usr/lib/libtestcontainers-c.so
+sudo cp testcontainers-c/testcontainers-native.h /usr/include
+sudo cp testcontainers-c/testcontainers-native.so /usr/lib/libtestcontainers-native.so
 ```
 
 This is required so that Swift can actually find the header and library. On some systems, it may be required to deploy the *.so file to `/usr/lib64` instead (such as openSUSE). Try this if Swift is unable to find the library at `/usr/lib`.
@@ -30,7 +30,7 @@ swift package init --type=executable
 Inside of this project, create a new directory under `Sources/` called `CTestContainers`. Create a `CTestContainers.h` file with the following content:
 
 ```c
-#include <testcontainers-c.h>
+#include <testcontainers-native.h>
 ```
 
 Then, create a file called `module.modulemap` in the same directory with this:
@@ -38,7 +38,7 @@ Then, create a file called `module.modulemap` in the same directory with this:
 ```c
 module CTestContainers [system] {
     header "CTestContainers.h"
-    link "testcontainers-c"
+    link "testcontainers-native"
     export *
 }
 ```
@@ -89,7 +89,7 @@ extension String {
 }
 
 let defaultImage = "wiremock/wiremock:3.0.1-1"
-print("Using WireMock with the Testcontainers C binding (from Swift):")
+print("Using WireMock with the Testcontainers Native binding (from Swift):")
 
 print("Creating new container: \(defaultImage)")
 let requestId = tc_new_container_request(defaultImage)
@@ -133,13 +133,13 @@ Also, note that that `free` should be called to avoid memory leaks on the C stri
 To use the `wiremock` module in Swift, all that needs to be done is to deploy the header and library in the same way as described above, and then add the following to `CTestContainers.h`:
 
 ```c
-#include <testcontainers-c-wiremock.h>
+#include <testcontainers-native-wiremock.h>
 ```
 
 And the following to `module.modulemap`:
 
 ```c
-link "testcontainers-c-wiremock"
+link "testcontainers-native-wiremock"
 ```
 
 Then it is possible to use all the wiremock module helper functions from inside of Swift.

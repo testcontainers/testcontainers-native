@@ -6,7 +6,7 @@ easier.
 The expectation is that the modules are implemented in a separate dynamic library
 and linked to the consumer project.
 
-The modules use Native API, and
+The modules use a C API, and
 can be a fully native implementation or
 a Golang bridge one, similar to the core project.
 
@@ -30,7 +30,7 @@ The following modules are available for this project:
 Initializing WireMock with the module:
 
 ```c
-#include "testcontainers-c-wiremock.h"
+#include "testcontainers-native-wiremock.h"
 
 int main() {
     printf("Creating new container: %s\n", DEFAULT_WIREMOCK_IMAGE);
@@ -50,12 +50,12 @@ Show me the Code
 </summary>
 
 ```c
-#include "testcontainers-c.h"
+#include "testcontainers-native.h"
 
 #define DEFAULT_IMAGE "wiremock/wiremock:3.1.0-1"
 
 int main() {
-    printf("Using WireMock with the Testcontainers C binding:\n");
+    printf("Using WireMock with the Testcontainers Native binding:\n");
 
     printf("Creating new container: %s\n", DEFAULT_IMAGE);
     int requestId = tc_new_container_request(DEFAULT_IMAGE);
@@ -76,7 +76,7 @@ and you can also create modules as standalone repositories.
 
 ### Where to Publish Modules?
 
-Some modules are stored in [this repository](https://github.com/testcontainers/testcontainers-c) for demo and prototyping purposes.
+Some modules are stored in [this repository](https://github.com/testcontainers/testcontainers-native) for demo and prototyping purposes.
 You are welcome to add your modules there too.
-If you develop new modules, once `vcpkg` or `Conan` packaging is implemented for Testcontainers C,
+If you develop new modules, once `vcpkg` or `Conan` packaging is implemented for Testcontainers Native,
 you might want to develop your module in a standalone repository instead.

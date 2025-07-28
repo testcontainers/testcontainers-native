@@ -13,14 +13,14 @@ At the moment, this is single channel for all project matters.
 
 ## Raising Issues and Feature Requests
 
-Use [GitHub Issues](https://github.com/testcontainers/testcontainers-c/issues).
+Use [GitHub Issues](https://github.com/testcontainers/testcontainers-native/issues).
 Note that it may take some time to get a response, thanks for your patience.
 Contributions are always welcome, see the [Contributor Guide](../CONTRIBUTING.md).
 
 ## Reporting Security Issues
 
 You can submit any security issue or suspected vulnerability
-on [GitHub Security](https://github.com/testcontainers/testcontainers-c/security/advisories).
+on [GitHub Security](https://github.com/testcontainers/testcontainers-native/security/advisories).
 Please do NOT use public GitHub Issues for reporting vulnerabilities.
 
 Read More - [Security Policy](./SECURITY.md).

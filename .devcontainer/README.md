@@ -1,4 +1,4 @@
-# Testcontainers for C/C++. DevContainer
+# Testcontainers Native. DevContainer
 
 This is an experimental Dev Container for the project site that
 does not yet include the build tools.

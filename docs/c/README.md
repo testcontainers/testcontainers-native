@@ -1,6 +1,6 @@
-# Using Testcontainers for C
+# Using Testcontainers Native
 
-You can use the `testcontainers-c` library with common C
+You can use the `testcontainers-native` library with common C
 unit testing frameworks and, soon, with package managers.
 
 !!! note
@@ -31,9 +31,9 @@ You can also use [CPM](https://github.com/cpm-cmake/CPM.cmake) in CMake:
 ```cmake
 include(cmake/CPM.cmake)
 CPMAddPackage(
-    NAME testcontainers-c
+    NAME testcontainers-native
     VERSION 0.0.2
-    GITHUB_REPOSITORY "testcontainers/testcontainers-c"
+    GITHUB_REPOSITORY "testcontainers/testcontainers-native"
     OPTIONS "SKIP_DEMOS TRUE")
 ```
 
@@ -55,10 +55,10 @@ Testcontainers for Go has automatic resource de-provisioning.
 ```c
 #include <stdio.h>
 #include <string.h>
-#include "testcontainers-c-wiremock.h"
+#include "testcontainers-native-wiremock.h"
 
 int main() {
-    printf("Using WireMock with the Testcontainers C binding:\n");
+    printf("Using WireMock with the Testcontainers Native binding:\n");
 
     printf("Creating new container: %s\n", DEFAULT_WIREMOCK_IMAGE);
     int requestId = tc_wm_new_default_container();
@@ -113,7 +113,7 @@ Then, this code will be replaced by a real test of your application.
 }
 ```
 
-In CMake, once the `testcontainers-c` is installed (see above),
+In CMake, once the `testcontainers-native` is installed (see above),
 you can use it in test executables built by CMake:
 
 ```cmake
@@ -121,8 +121,8 @@ enable_testing()
 file(COPY test_data DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_executable(${TARGET_OUT} mytest.cpp)
-add_dependencies(${TARGET_OUT} testcontainers-c-shim)
-target_link_libraries(${TARGET_OUT} PRIVATE testcontainers-c)
+add_dependencies(${TARGET_OUT} testcontainers-native-shim)
+target_link_libraries(${TARGET_OUT} PRIVATE testcontainers-native)
 add_test(NAME wiremock_module_demo COMMAND ${TARGET_OUT})
 ```
 
@@ -135,5 +135,5 @@ ctest --output-on-failure
 
 ## Demos
 
-- [Using the generic Testcontainers C API](../../demo/generic-container/README.md)
+- [Using the generic Testcontainers Native API](../../demo/generic-container/README.md)
 - [Using the WireMock module](../../demo/wiremock/README.md)

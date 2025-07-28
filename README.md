@@ -6,7 +6,7 @@
 
 [![Slack: testcontainers-native on slack.testcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94native-brightgreen?style=flat&logo=slack)](https://slack.testcontainers.org/)
 [![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/oleg-nenashev/testcontainers-c)](https://github.com/oleg-nenashev/testcontainers-c/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/testcontainers/testcontainers-native)](https://github.com/testcontainers/testcontainers-native/releases)
 
 !!! warning
     This is a prototype.
@@ -24,7 +24,7 @@ Also join the `#testcontainers-native` channel on the [Testcontainers Slack](htt
 
 ## Key Features
 
-- _Testcontainers for C/C++_ - a shared library and C-style headers that can be used in native projects
+- _Testcontainers Native_ - a shared library and C-style headers that can be used in native projects
 - Support for [C](./docs/c/README.md), [C++](./docs/cpp/README.md), [Swift](./docs/swift/README.md) and other native projects.
 - Minimum viable Testcontainers API functionality:
   starting and terminating containers, passing files, exposing ports,
@@ -66,12 +66,12 @@ See [the examples and demos](./demo/README.md) for more examples.
 ### Using in other languages
 
 TL;DR: You get the C header file, a shared library object or a DLL file from the
-[Testcontainers for C](./docs/c/README.md) module.
+[Testcontainers for Native](./docs/c/README.md) module.
 Then, you can bind this native library in your project type.
 It allows supporting many other languages that support using
 native tooling via dynamically or statically linked libraries:
 
-![Languages that can leverage Testcontainers for C](docs/images/supported-languages.png)
+![Languages that can leverage Testcontainers Native](docs/images/supported-languages.png)
 
 Disclaimer:
 The schema above shows the most popular languages for Embedded systems,
