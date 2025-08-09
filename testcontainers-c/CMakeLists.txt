@@ -22,7 +22,7 @@ add_custom_target(${TARGET} DEPENDS ${TARGET_LIB} ${TARGET_HEADER})
 
 add_library(${PROJECT_NAME} SHARED IMPORTED GLOBAL)
 add_dependencies(${PROJECT_NAME} ${TARGET})
-set_target_properties(${PROJECT_NAME} PROPERTIES 
+set_target_properties(${PROJECT_NAME} PROPERTIES
     LINKER_LANGUAGE C
     VERSION ${PROJECT_VERSION}
     PUBLIC_HEADER testcontainers-c.h
