@@ -7,7 +7,7 @@ set(SHIM_TARGET_HEADER testcontainers-c.h)
 add_custom_command(OUTPUT ${SHIM_TARGET_LIB} ${SHIM_TARGET_HEADER}
   DEPENDS ${SRCS}
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  COMMAND env GOPATH=${GOPATH} go build -buildmode=c-shared
+  COMMAND env GOPATH=${GOPATH} go build -buildmode=c-archive -linkshared
   -o "${CMAKE_CURRENT_BINARY_DIR}/${SHIM_TARGET_LIB}"
   ${CMAKE_GO_FLAGS} ${SRCS}
   COMMENT "Building Testcontainers C shared library")
@@ -19,7 +19,7 @@ set(TARGET_NAME ${TARGET})
 set(TARGET_DESCRIPTION ${PROJECT_DESCRIPTION})
 set(TARGET_VERSION ${PROJECT_VERSION})
 
-add_library(${TARGET} SHARED IMPORTED GLOBAL)
+add_library(${TARGET} STATIC IMPORTED GLOBAL)
 add_dependencies(${TARGET} ${SHIM_TARGET})
 set_target_properties(${TARGET} PROPERTIES
     LINKER_LANGUAGE C
