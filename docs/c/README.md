@@ -121,7 +121,6 @@ enable_testing()
 file(COPY test_data DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_executable(${TARGET_OUT} mytest.cpp)
-add_dependencies(${TARGET_OUT} testcontainers-c-shim)
 target_link_libraries(${TARGET_OUT} PRIVATE testcontainers-c)
 add_test(NAME wiremock_module_demo COMMAND ${TARGET_OUT})
 ```
