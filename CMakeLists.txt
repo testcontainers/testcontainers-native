@@ -8,6 +8,7 @@ project (TESTCONTAINERS-C
 include(GNUInstallDirs)
 include(CTest)
 
+add_subdirectory(testcontainers-bridge)
 add_subdirectory(testcontainers-c)
 add_subdirectory(modules)
 if(NOT DEFINED SKIP_DEMOS)

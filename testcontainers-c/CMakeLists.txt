@@ -1,32 +1,19 @@
-set(SRCS testcontainers-c.go)
-
-set(SHIM_TARGET testcontainers-c-shim)
-set(SHIM_TARGET_LIB testcontainers-c.so)
-set(SHIM_TARGET_HEADER testcontainers-c.h)
-
-add_custom_command(OUTPUT ${SHIM_TARGET_LIB} ${SHIM_TARGET_HEADER}
-  DEPENDS ${SRCS}
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  COMMAND env GOPATH=${GOPATH} go build -buildmode=c-archive -linkshared
-  -o "${CMAKE_CURRENT_BINARY_DIR}/${SHIM_TARGET_LIB}"
-  ${CMAKE_GO_FLAGS} ${SRCS}
-  COMMENT "Building Testcontainers C shared library")
-
-add_custom_target(${SHIM_TARGET} DEPENDS ${SHIM_TARGET_LIB} ${SHIM_TARGET_HEADER})
-
 set(TARGET testcontainers-c)
 set(TARGET_NAME ${TARGET})
-set(TARGET_DESCRIPTION ${PROJECT_DESCRIPTION})
+set(TARGET_DESCRIPTION "Testcontainer library for C")
 set(TARGET_VERSION ${PROJECT_VERSION})
 
-add_library(${TARGET} STATIC IMPORTED GLOBAL)
-add_dependencies(${TARGET} ${SHIM_TARGET})
-set_target_properties(${TARGET} PROPERTIES
-    LINKER_LANGUAGE C
-    VERSION ${TARGET_VERSION}
-    PUBLIC_HEADER testcontainers-c.h
-    IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/${SHIM_TARGET_LIB}
-    INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_BINARY_DIR})
+add_library(${TARGET} SHARED
+    src/container.c
+)
+
+target_sources(${TARGET}
+    PUBLIC FILE_SET HEADERS
+    BASE_DIRS include
+    FILES include/testcontainers-c/container.h
+)
+
+target_link_libraries(${TARGET} PRIVATE testcontainers-bridge)
 
 configure_file(cmake.pc.in ${TARGET}.pc @ONLY)
 install(FILES ${SHIM_TARGET_LIB}
