@@ -1,13 +1,12 @@
 # Getting Started with Testcontainers for C/C++
 
-In this section, we will build a demo C application that uses Testcontainers
-in a simple C application
-for deploying a [WireMock](https://wiremock.org/) API server,
-sends a simple HTTP request to this service,
+In this section, we will build a simple demo C application that uses Testcontainers
+for deploying a [WireMock](https://wiremock.org/) API server.
+It sends a simple HTTP request to this service,
 and verifies the response.
-We will not be using any C/C++ test framework for that.
+We will not be using any test framework for that.
 
-For test framework framework examples, see the [demos](../demo/README.md).
+For test framework examples, see the [demos](../demo/README.md).
 
 ## Build the Project
 
