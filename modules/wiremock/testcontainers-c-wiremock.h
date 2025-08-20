@@ -1,5 +1,3 @@
-#include "testcontainers-c.h"
-
 #ifndef TESTCONTAINERS_WIREMOCK_H
 #define TESTCONTAINERS_WIREMOCK_H
 
@@ -13,29 +11,29 @@
 
 struct WireMock_Mapping
 {
-    GoInt responseCode;
+    int responseCode;
     char* json;
     char* error;
 };
 
 /// @brief Creates a container request with a default image, exposed port and init logic
 /// @return Container request ID
-GoInt tc_wm_new_default_container();
+int tc_wm_new_default_container();
 
 /// @brief Creates a container request with a default image, exposed port and init logic
 /// @param image Full image name
 /// @return Container request ID
-GoInt tc_wm_new_container(char* image);
+int tc_wm_new_container(char* image);
 
 /// @brief Adds WireMock mapping to the request
 /// @param requestID Container Request ID
 /// @param filePath Source file in the local filesystem
 /// @param destination Destination file, relative to the mappings dir. Extension is optional
-void tc_wm_with_mapping(GoInt requestID, char* filePath, char* destination);
+void tc_wm_with_mapping(int requestID, char* filePath, char* destination);
 
 /// @brief Gets WireMock mappings using Admin API
 /// @param containerId Container ID
 /// @return Mapping information if response code is 200, error details otherwise
-struct WireMock_Mapping tc_wm_get_mappings(GoInt containerId);
+struct WireMock_Mapping tc_wm_get_mappings(int containerId);
 
 #endif
