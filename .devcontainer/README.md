@@ -5,4 +5,6 @@ does not yet include the build tools.
 
 ## Included Toolchains
 
+- C/C++ -  For building the project itself
+- Docker-in-Docker - For the included integration tests
 - Python/MkDocs - for the project site and documentation development

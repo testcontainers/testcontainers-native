@@ -1,12 +1,12 @@
 // Credits - https://github.com/hitsumabushi845/MkDocs-with-Remote-Containers
 {
-    "name": "Material for MkDocs",
+    "name": "Testcontainers Native Development",
     "dockerFile": "Dockerfile",
-//    "features": {
-//        "ghcr.io/devcontainers/features/docker-in-docker:2.12.1": {
-//            "version": "latest",
-//            "moby": true
-//        }
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2.12.4": {
+            "version": "latest",
+            "moby": true
+        }
     },
     "customizations": {
       "vscode": {
@@ -17,6 +17,14 @@
         },
         // Add the IDs of extensions you want installed when the container is created.
         "extensions": [
+          // C/C++ development
+          "ms-vscode.cmake-tools",
+          "ms-vscode.makefile-tools",
+          "ms-vscode.cpptools-extension-pack",
+          "ms-azuretools.vscode-docker",
+          // Golang development
+          "golang.go",
+          // Generic site and documentation development
           "streetsidesoftware.code-spell-checker",
           "yzhang.markdown-all-in-one",
           "redhat.vscode-yaml",
@@ -33,7 +41,5 @@
     "remoteUser": "vscode",
     // Updates cache on new container runs
     "postCreateCommand": "pip3 install -r .devcontainer/requirements.txt",
-    // Docker-in-Docker for testing
-  //  "runArgs": ["--init", "--privileged"],
-  //  "overrideCommand": false
+    // "overrideCommand": false
   }
