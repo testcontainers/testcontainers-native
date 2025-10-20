@@ -4,7 +4,7 @@ project(testcontainers-c VERSION 0.0.1
 
 include(GNUInstallDirs)
 
-set(SRCS testcontainers-c.go)
+set(SRCS testcontainers-c.go testcontainers-c-compose.go)
 
 set(TARGET testcontainers-c-shim)
 set(TARGET_LIB testcontainers-c.so)
