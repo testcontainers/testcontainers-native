@@ -30,7 +30,9 @@
           "redhat.vscode-yaml",
           "shardulm94.trailing-spaces",
           "oderwat.indent-rainbow",
-          "msjsdiag.debugger-for-chrome"
+          "msjsdiag.debugger-for-chrome",
+          // GitHub Actions
+          "github.vscode-github-actions"
         ],
       },
     },
