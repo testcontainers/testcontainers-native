@@ -1,4 +1,4 @@
-module github.com/testcontainers/testcontainers-c
+module github.com/testcontainers/testcontainers-native
 
 go 1.19
 

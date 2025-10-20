@@ -21,8 +21,8 @@ var customizers map[int][]*testcontainers.CustomizeRequestOption
 
 // Creates Unique container request and returns its ID
 //
-//export tc_new_container_request
-func tc_new_container_request(image *C.cchar_t) (id int) {
+//export tc_bridge_new_container_request
+func tc_bridge_new_container_request(image *C.cchar_t) (id int) {
 	req := testcontainers.ContainerRequest{
 		Image: C.GoString(image),
 	}
@@ -31,8 +31,8 @@ func tc_new_container_request(image *C.cchar_t) (id int) {
 	return len(containerRequests) - 1
 }
 
-//export tc_run_container
-func tc_run_container(requestID int) (id int, ok bool, errstr *C.char) {
+//export tc_bridge_run_container
+func tc_bridge_run_container(requestID int) (id int, ok bool, errstr *C.char) {
 	id, ok, err := _RunContainer(requestID)
 	if err != nil {
 		return -1, ok, ToCString(err)
@@ -68,15 +68,15 @@ func _RunContainer(requestID int) (id int, ok bool, err error) {
 	return containerId, true, nil
 }
 
-//export tc_terminate_container
-func tc_terminate_container(containerID int) *C.char {
+//export tc_bridge_terminate_container
+func tc_bridge_terminate_container(containerID int) *C.char {
 	ctx := context.Background()
 	container := *containers[containerID]
 	return ToCString(container.Terminate(ctx))
 }
 
-//export tc_get_container_log
-func tc_get_container_log(containerID int) (log *C.char) {
+//export tc_bridge_get_container_log
+func tc_bridge_get_container_log(containerID int) (log *C.char) {
 	ctx := context.Background()
 	container := *containers[containerID]
 
@@ -94,11 +94,15 @@ func tc_get_container_log(containerID int) (log *C.char) {
 	return C.CString(string(bytes))
 }
 
-//export tc_get_uri
-func tc_get_uri(containerID int, port int) (uri string, e error) {
+//export tc_bridge_get_uri
+func tc_bridge_get_uri(containerID int, port int) (uri *C.char, ok bool, errstr *C.char) {
 	ctx := context.Background()
 	container := *containers[containerID]
-	return _GetURI(ctx, container, port)
+    str, err := _GetURI(ctx, container, port)
+    if err != nil {
+        return nil, false, ToCString(err)
+    }
+    return C.CString(str), true, nil
 }
 
 func _GetURI(ctx context.Context, container testcontainers.Container, port int) (string, error) {
@@ -115,8 +119,8 @@ func _GetURI(ctx context.Context, container testcontainers.Container, port int) 
 	return "http://" + hostIP + ":" + mappedPort.Port(), nil
 }
 
-//export tc_with_wait_for_http
-func tc_with_wait_for_http(requestID int, port int, url *C.cchar_t) {
+//export tc_bridge_with_wait_for_http
+func tc_bridge_with_wait_for_http(requestID int, port int, url *C.cchar_t) {
 	req := func(req *testcontainers.GenericContainerRequest) {
 		req.WaitingFor = wait.ForHTTP(C.GoString(url)).WithPort(nat.Port(strconv.Itoa(port)))
 	}
@@ -124,8 +128,8 @@ func tc_with_wait_for_http(requestID int, port int, url *C.cchar_t) {
 	registerCustomizer(requestID, req)
 }
 
-//export tc_with_file
-func tc_with_file(requestID int, filePath *C.cchar_t, targetPath *C.cchar_t) {
+//export tc_bridge_with_file
+func tc_bridge_with_file(requestID int, filePath *C.cchar_t, targetPath *C.cchar_t) {
 	req := func(req *testcontainers.GenericContainerRequest) {
 		cfgFile := testcontainers.ContainerFile{
 			HostFilePath:      C.GoString(filePath),
@@ -138,8 +142,8 @@ func tc_with_file(requestID int, filePath *C.cchar_t, targetPath *C.cchar_t) {
 	registerCustomizer(requestID, req)
 }
 
-//export tc_with_exposed_tcp_port
-func tc_with_exposed_tcp_port(requestID int, port int) {
+//export tc_bridge_with_exposed_tcp_port
+func tc_bridge_with_exposed_tcp_port(requestID int, port int) {
 	req := func(req *testcontainers.GenericContainerRequest) {
 		req.ExposedPorts = append(req.ExposedPorts, strconv.Itoa(port)+"/tcp")
 	}
@@ -155,8 +159,8 @@ func registerCustomizer(requestID int, customizer testcontainers.CustomizeReques
 	return len(customizers[requestID]) - 1
 }
 
-//export tc_send_http_get
-func tc_send_http_get(containerID int, port int, endpoint *C.cchar_t) (responseCode C.int, responseBody *C.char, errstr *C.char) {
+//export tc_bridge_send_http_get
+func tc_bridge_send_http_get(containerID int, port int, endpoint *C.cchar_t) (responseCode C.int, responseBody *C.char, errstr *C.char) {
 	container := *containers[containerID]
 	responseCodeVal, responseBodyStr, err := SendHttpRequest(http.MethodGet, container, port, C.GoString(endpoint), nil)
 	if err != nil {
