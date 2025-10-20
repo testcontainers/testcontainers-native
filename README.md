@@ -4,14 +4,12 @@
   <img width="512px" src="docs/images/logo/logo_testcontainers_native_wide.png" alt="Testcontainers Native Logo"/>
 </p>
 
-[![Slack: testcontainers-native on slack.testcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94native-brightgreen?style=flat&logo=slack)](http://slack.testcontainers.org/)
+[![Slack: testcontainers-native on slack.testcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94native-brightgreen?style=flat&logo=slack)](https://slack.testcontainers.org/)
 [![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/oleg-nenashev/testcontainers-c)](https://github.com/oleg-nenashev/testcontainers-c/releases)
 
-!!! warning
-    This is a prototype.
-    There is a lot to do before it can be distributed and used in production, see the GitHub Issues
-    and the [project roadmap](./ROADMAP.md)
+> [!WARNING]
+> This is a prototype. There is a lot to do before it can be distributed and used in production, see the GitHub Issues and the [project roadmap](./ROADMAP.md)
 
 This is not a standalone [Testcontainers](https://testcontainers.org/) engine,
 but a C-style shared library adapter for native languages like C/C++, D, Lua, Swift, etc.
@@ -20,7 +18,7 @@ The project is based on [Testcontainers for Go](https://golang.testcontainers.or
 which is one of the most powerful Testcontainers implementations.
 
 Contributions and feedback are welcome!
-Also join the `#testcontainers-native` channel on the [Testcontainers Slack](http://slack.testcontainers.org/).
+Also join the `#testcontainers-native` channel on the [Testcontainers Slack](https://slack.testcontainers.org/).
 
 ## Key Features
 
@@ -88,9 +86,7 @@ describes how it can be done in principle.
 ## Credits
 
 Using a complex Golang framework from C/C++ is not trivial.
-Neither the CMake files are.
-This project would not succeed without many quality articles
-and help from the community.
+Neither are the CMake files. This project would not succeed without many quality articles and help from the community.
 
 Kudos to:
 
@@ -102,12 +98,12 @@ Kudos to:
    [An Adventure into CGO - Calling Go code with C](https://medium.com/@ben.mcclelland/an-adventure-into-cgo-calling-go-code-with-c-b20aa6637e75)
 - [Insu Jang](https://github.com/insujang) for
   [Implementing Kubernetes C++ Client Library using Go Client Library](https://insujang.github.io/2019-11-28/implementing-kubernetes-cpp-client-library)
-- Infinite number of StackOverflow contributors
+- An infinite number of StackOverflow contributors
 
 ## Discuss
 
 For any questions and feedback,
-join the `#testcontainers-native` channel on the [Testcontainers Slack](http://slack.testcontainers.org/).
+join the `#testcontainers-native` channel on the [Testcontainers Slack](https://slack.testcontainers.org/).
 
 ## Support the Project
 

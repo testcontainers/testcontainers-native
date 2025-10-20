@@ -3,9 +3,8 @@
 You can use the `testcontainers-c` library with common C
 unit testing frameworks and, soon, with package managers.
 
-!!! note
-    This section is coming soon.
-    All contributions are welcome, just submit a pull request!
+> [!NOTE]
+> This section is coming soon. All contributions are welcome, just submit a pull request!
 
 ## Installing the library
 
@@ -39,9 +38,8 @@ CPMAddPackage(
 
 ## Using the Library
 
-!!! note
-    More frameworks will be documented soon.
-    All contributions are welcome, just submit a pull request!
+> [!NOTE]
+> More frameworks will be documented soon. All contributions are welcome, just submit a pull request!
 
 ### CMake Tests (CTest)
 

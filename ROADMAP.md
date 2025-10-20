@@ -9,13 +9,15 @@ the pinned issues to learn about the key initiatives on the table.
 
 ## Key Objectives
 
-- Ensure sufficient feature parity with Testcontainers for Go ([#6](https://github.com/testcontainers/testcontainers-c/issues/6))
-- Add a C++ binding library and class-based headers ([#12](https://github.com/testcontainers/testcontainers-c/issues/12))
-- Prototype and document support for other languages that
+What we want to do before 1.0: 
+
+- [ ] Ensure sufficient feature parity with Testcontainers for Go ([#6](https://github.com/testcontainers/testcontainers-c/issues/6))
+- [ ] Add a C++ binding library and class-based headers ([#12](https://github.com/testcontainers/testcontainers-c/issues/12))
+- [ ] Prototype and document support for other languages that
   leverage native libraries, in particular Swift
-- Make Testcontainers Native an official project
+- [x] Make Testcontainers Native an official project
   listed on the [Testcontainers site](https://testcontainers.com/)
-- Publish the project to common C/C++ package managers
+- [ ] Publish the project to common C/C++ package managers
   ([vcpkg](https://github.com/testcontainers/testcontainers-c/issues/2),
   [Conan](https://github.com/testcontainers/testcontainers-c/issues/3))
 
