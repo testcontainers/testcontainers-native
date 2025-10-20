@@ -19,6 +19,12 @@ testcontainers-c/testcontainers-c.so
 testcontainers-c/testcontainers.so
 testcontainers-c/testcontainers.dll
 testcontainers-c/testcontainers.h
+testcontainers-bridge/testcontainers-bridge.h
+
+# VCPKG
+**/vcpkg_installed/**
+
+
 *.so
 *.out
 *.exe

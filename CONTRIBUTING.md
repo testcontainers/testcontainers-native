@@ -43,6 +43,14 @@ To skip the demo builds and tests, use the `SKIP_DEMOS` variable:
 cmake -DSKIP_DEMOS=true .
 ```
 
+## Building the VCPKG
+
+To build the VCPkg for the local environment, use the following:
+
+```shell
+vcpkg install testcontainers-c --overlay-ports=$(pwd)/ports/testcontainers-c 
+```
+
 ## Contributing to the Documentation
 
 The documentation is structured in the MkDocs format and uses Material for MkDocs.
