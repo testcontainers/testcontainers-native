@@ -44,6 +44,13 @@
           "ms-azuretools.vscode-docker"
         ],
       },
+      // Configure properties specific to Codespaces.
+	    "codespaces": {
+		     "openFiles": [
+			     "README.md",
+			     "CONTRIBUTING.md"
+		   ]
+	    }
     },
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     "forwardPorts": [
