@@ -1,0 +1,8 @@
+{
+  "name": "testcontainers-c",
+  "version-string": "0.1.0",
+  "description": "Testcontainers library for C - C API and shared library",
+  "homepage": "https://github.com/testcontainers/testcontainers-native",
+  "license": "MIT",
+  "dependencies": []
+}

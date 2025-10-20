@@ -1,0 +1,4 @@
+testcontainers-c provides CMake targets:
+
+find_package(testcontainers-c CONFIG REQUIRED)
+target_link_libraries(main PRIVATE testcontainers-c::testcontainers-c)

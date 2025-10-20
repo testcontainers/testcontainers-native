@@ -1,6 +1,6 @@
 set(TARGET testcontainers-c)
 set(TARGET_NAME ${TARGET})
-set(TARGET_DESCRIPTION "Testcontainer library for C")
+set(TARGET_DESCRIPTION "Testcontainers library for C")
 set(TARGET_VERSION ${PROJECT_VERSION})
 
 add_library(${TARGET} SHARED
