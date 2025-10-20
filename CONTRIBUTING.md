@@ -6,6 +6,14 @@
 Contributions are welcome!
 For any feedback and suggestions, use GitHub Issues.
 
+## Developer Environment
+
+You can use one of the following developer environments:
+
+* [Dev Containers](.devcontainer/README.md) - for local development, testing,
+  and also for the documentation site development.
+* Nix
+
 ## Community Slack
 
 We use the `#testcontainers-native` channel on [Testcontainers Slack](https://slack.testcontainers.com/).
@@ -38,7 +46,7 @@ cmake -DSKIP_DEMOS=true .
 ## Contributing to the Documentation
 
 The documentation is structured in the MkDocs format and uses Material for MkDocs.
-To develop the site in this repository, start it in the [Dev Containers](.devcontainer/README.md)
+To develop the site in this repository, start it in a [Dev Container](.devcontainer/README.md)
 and use the following commands:
 
 ```shell
@@ -57,4 +65,4 @@ mkdocs build
 - `tc_` is used as a prefix for all exported Testcontainers functions
 - When possible, we try to avoid special Golang types in public API and try to expose wrapper types
 - `const` is important for users, and please add it to your arguments when possible.
-  There is no Const in Golang, so some `typedef` injection is needed when importing CGo
+  There is no `const` in Golang, so some `typedef` injection is needed when importing CGo
