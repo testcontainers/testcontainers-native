@@ -3,7 +3,7 @@ FROM debian:bookworm-20250317
 RUN apt-get update
 RUN apt-get install -y \
     build-essential git checkinstall libssl-dev openssl software-properties-common \
-    cmake golang-go \
+    golang-go \
     python3.11 python3-pip python3.11-venv libsass-dev libcairo2 libpango-1.0-0 libpangoft2-1.0-0 pangocairo-1.0 pngquant \
     sudo
 

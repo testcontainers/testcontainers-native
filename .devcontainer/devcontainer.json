@@ -1,4 +1,4 @@
-// Credits - https://github.com/hitsumabushi845/MkDocs-with-Remote-Containers
+// See the README for details
 {
     "name": "Testcontainers Native Development",
     "dockerFile": "Dockerfile",
@@ -6,6 +6,13 @@
         "ghcr.io/devcontainers/features/docker-in-docker:2.12.4": {
             "version": "latest",
             "moby": true
+        },
+        "ghcr.io/devcontainers-extra/features/cmake:1": {
+            "version": "3.31.9"
+        },
+        "ghcr.io/msclock/features/vcpkg:2": {
+            "version": "stable",
+            "vcpkgAutoUpdate": true
         }
     },
     "customizations": {
@@ -21,7 +28,7 @@
           "ms-vscode.cmake-tools",
           "ms-vscode.makefile-tools",
           "ms-vscode.cpptools-extension-pack",
-          "ms-azuretools.vscode-docker",
+          "cschlosser.doxdocgen",
           // Golang development
           "golang.go",
           // Generic site and documentation development
@@ -32,7 +39,9 @@
           "oderwat.indent-rainbow",
           "msjsdiag.debugger-for-chrome",
           // GitHub Actions
-          "github.vscode-github-actions"
+          "github.vscode-github-actions",
+          // Containers
+          "ms-azuretools.vscode-docker"
         ],
       },
     },
