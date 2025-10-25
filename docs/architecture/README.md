@@ -7,21 +7,26 @@
 
 ![Testcontainers Native Build Process](./images/build-process.png)
 
-### Stage 1. Testcontainers for C shared library
+### Stage 1. Testcontainers for C Bridge library
 
-The core `testcontainers-c` shared library is built with [Cgo](https://pkg.go.dev/cmd/cgo).
+The core `testcontainers-bridge` shared library is built with [Cgo](https://pkg.go.dev/cmd/cgo).
 For that the `-buildmode=c-shared` is used in the Golang builder,
 and it also receives a customized header so that the types can be mapped between C and Golang.
-For that, we also have to flatten the structure and to switch the reference-based build process to fixed Objects stored in the Golang namespace, and C API
+We also have to flatten the structure and to switch the reference-based build process to fixed Objects stored in the Golang namespace, and C API
 using unique object IDs.
 
-### Stage 2. Language Bindings
+### Stage 2. Testcontainers for C shared library
+
+As _Cgo_ cannot produde fancy headers and structure, we have a manually created header file that wraps core functionality of `tescontainers-bridge`.
+This provides a static library and header files that can be used natively in C/C++ development, or by language bindings.
+
+### Stage 3. Language Bindings
 
 Then, we build custom binding libraries, by using Testcontainers for C
 as a static library that is bundled into the language specific libs.
 This stage depends on the language and common practices there.
 
-### Stage 3. Executable Code
+### Stage 4. Executable Code
 
 Well, you build it.
 From the previous stages,
