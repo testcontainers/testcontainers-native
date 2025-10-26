@@ -17,7 +17,7 @@ using unique object IDs.
 
 ### Stage 2. Testcontainers for C shared library
 
-As _Cgo_ cannot produde fancy headers and structure, we have a manually created header file that wraps core functionality of `tescontainers-bridge`.
+As _Cgo_ cannot produce fancy headers and structure, we have a manually created header file that wraps core functionality of `tescontainers-bridge`.
 This provides a static library and header files that can be used natively in C/C++ development, or by language bindings.
 
 ### Stage 3. Language Bindings
