@@ -17,6 +17,7 @@ docs_dir: .
 exclude_docs: |
   /_deps/**
   !.devcontainer
+  /build/_deps/**
 
 nav:
   - Documentation:
@@ -61,8 +62,7 @@ plugins:
           paths: [src]
   - mkdocs_github_changelog:
       token: !ENV GITHUB_TOKEN
-      release_template: <jinja2 str>
-      match: 'v[0-9+].[0-9+].[0-9]+'
+      base_indent: 2
       autoprocess: true
       enabled: true
 

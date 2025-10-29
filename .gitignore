@@ -14,6 +14,8 @@ build/
 /lib
 
 # Generated files
+testcontainers-bridge/testcontainers-bridge.h
+
 testcontainers-c/testcontainers-c.h
 testcontainers-c/testcontainers-c.so
 testcontainers-c/testcontainers.so
@@ -35,3 +37,4 @@ testcontainers-bridge/testcontainers-bridge.h
 ## MkDocs
 /.cache
 /_site
+

@@ -12,7 +12,10 @@ You can use one of the following developer environments:
 
 * [Dev Containers](.devcontainer/README.md) - for local development, testing,
   and also for the documentation site development.
-* Nix
+* GitHub Codespaces (with a Dev Containers)
+* Experimental: Nix
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/testcontainers/testcontainers-native)
 
 ## Community Slack
 

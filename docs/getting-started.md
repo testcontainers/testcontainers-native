@@ -32,7 +32,7 @@ Any patches and issue reports are welcome!
 
 You can use a C/C++ framework for writing tests, e.g. CTest or CppUnit.
 Or you can just have a small launcher as presented below.
-Below there is a code of the [WireMock demo](./demo/wiremock/) that only uses the library
+Below there is a code of the [WireMock demo](../demo/wiremock/README.md) that only uses the library
 but not a specialized WireMock module (see below).
 
 Note that in this example, we do not terminate the container,
