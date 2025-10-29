@@ -15,11 +15,11 @@ for the list of modules for other languages.
 
 ## Sample output
 
-[![Sample Output](../../demo/wiremock/sample_output.png)](../../demo/wiremock/)
+[![Sample Output](../../demo/wiremock/sample_output.png)](../../demo/wiremock/README.md)
 
 ## Examples
 
-- [Usage Demo](../../demo/wiremock/)
+- [Usage Demo](../../demo/wiremock/README.md)
 
 ## Read more
 

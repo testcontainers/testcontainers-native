@@ -61,4 +61,4 @@ TEST_F(WireMockTestContainer, HelloWorld) {
 
 ## Demos
 
-- [Using Testcontainers C in Google Test (C++)](../../demo/google-test/)
+- [Using Testcontainers C in Google Test (C++)](../../demo/google-test/README.md)

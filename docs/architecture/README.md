@@ -31,5 +31,5 @@ This stage depends on the language and common practices there.
 Well, you build it.
 From the previous stages,
 you get a header file, binding libraries,
-a shared library object or a DLL file from the [Testcontainers for C](./docs/c/README.md) module.
+a shared library object or a DLL file from the [Testcontainers for C](../c/README.md) module.
 Then, you know the drill.
