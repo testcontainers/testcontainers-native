@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.26)
-project (TESTCONTAINERS-C
+project (TESTCONTAINERS-NATIVE
     VERSION 0.1.0
     DESCRIPTION "Testcontainers for C and other native languages"
     LANGUAGES C CXX

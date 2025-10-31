@@ -1,0 +1,12 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=@CMAKE_INSTALL_PREFIX@
+libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+
+Name: @TARGET_NAME@
+Description: @TARGET_DESCRIPTION@
+Version: @TARGET_VERSION@
+
+Requires:
+Libs: -L${libdir}
+Cflags: -I${includedir}

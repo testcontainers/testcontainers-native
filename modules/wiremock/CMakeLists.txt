@@ -1,6 +1,6 @@
 set(TARGET testcontainers-c-wiremock)
 set(TARGET_NAME ${TARGET})
-set(TARGET_DESCRIPTION "Wiremock testcontainer abstractions for C")
+set(TARGET_DESCRIPTION "WireMock Testcontainers abstractions for C")
 set(TARGET_VERSION ${PROJECT_VERSION})
 
 add_library(${TARGET} SHARED
