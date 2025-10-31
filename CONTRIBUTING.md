@@ -51,7 +51,8 @@ cmake -DSKIP_DEMOS=true .
 To build the VCPkg for the local environment, use the following:
 
 ```shell
-vcpkg install testcontainers-c --overlay-ports=$(pwd)/ports/testcontainers-c 
+vcpkg install testcontainers-bridge --overlay-ports=$(pwd)/ports/
+vcpkg install testcontainers-c --overlay-ports=$(pwd)/ports/
 ```
 
 ## Contributing to the Documentation

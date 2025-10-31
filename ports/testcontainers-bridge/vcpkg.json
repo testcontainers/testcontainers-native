@@ -1,14 +1,10 @@
 {
-  "name": "testcontainers-c",
+  "name": "testcontainers-bridge",
   "version-string": "0.1.0",
-  "description": "Testcontainers library for C - C API and shared library",
+  "description": "Testcontainers Go bridge library for native languages",
   "homepage": "https://github.com/testcontainers/testcontainers-native",
   "license": "MIT",
-  "dependencies": [
-    {
-      "name": "testcontainers-bridge",
-      "host": true
-    },
+  "dependencies":[
     {
       "name": "vcpkg-cmake",
       "host": true
