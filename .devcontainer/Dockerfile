@@ -5,7 +5,8 @@ RUN apt-get install -y \
     build-essential git checkinstall libssl-dev openssl software-properties-common \
     golang-go \
     python3.11 python3-pip python3.11-venv libsass-dev libcairo2 libpango-1.0-0 libpangoft2-1.0-0 pangocairo-1.0 pngquant \
-    sudo
+    sudo \
+    libpq-dev
 
 ## vscode user
 RUN useradd -ms /bin/bash vscode \
