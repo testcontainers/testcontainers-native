@@ -3,21 +3,34 @@ set(TARGET_NAME ${TARGET})
 set(TARGET_DESCRIPTION "Testcontainer library for C++")
 set(TARGET_VERSION ${PROJECT_VERSION})
 
-add_library(${TARGET} INTERFACE)
-
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-target_sources(${TARGET}
-    PUBLIC FILE_SET HEADERS
-    BASE_DIRS .
-    FILES testcontainers.hpp
+add_library(${TARGET} INTERFACE)
+target_include_directories(${TARGET} INTERFACE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<INSTALL_INTERFACE:include>
 )
 
 target_link_libraries(${TARGET} INTERFACE testcontainers-c)
 
-configure_file(cmake.pc.in ${TARGET}.pc @ONLY)
-install(TARGETS ${TARGET}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-install(FILES ${CMAKE_BINARY_DIR}/${TARGET}.pc DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
+install(TARGETS ${TARGET} EXPORT ${TARGET}Targets)
+install(FILES testcontainers.hpp DESTINATION include)
+
+include(CMakePackageConfigHelpers)
+configure_package_config_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/${TARGET}Config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/${TARGET}Config.cmake
+    INSTALL_DESTINATION lib/cmake/${TARGET}
+)
+
+install(EXPORT ${TARGET}Targets
+    FILE ${TARGET}Config.cmake
+    NAMESPACE testcontainers-native::
+    DESTINATION lib/cmake/${TARGET}
+)
+
+install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/${TARGET}Config.cmake
+    DESTINATION lib/cmake/${TARGET}
+)
