@@ -121,8 +121,9 @@ func _GetURI(ctx context.Context, container testcontainers.Container, port int) 
 
 //export tc_bridge_with_wait_for_http
 func tc_bridge_with_wait_for_http(requestID int, port int, url *C.cchar_t) {
-	req := func(req *testcontainers.GenericContainerRequest) {
+	req := func(req *testcontainers.GenericContainerRequest) error {
 		req.WaitingFor = wait.ForHTTP(C.GoString(url)).WithPort(nat.Port(strconv.Itoa(port)))
+        return nil
 	}
 
 	registerCustomizer(requestID, req)
@@ -130,13 +131,14 @@ func tc_bridge_with_wait_for_http(requestID int, port int, url *C.cchar_t) {
 
 //export tc_bridge_with_file
 func tc_bridge_with_file(requestID int, filePath *C.cchar_t, targetPath *C.cchar_t) {
-	req := func(req *testcontainers.GenericContainerRequest) {
+	req := func(req *testcontainers.GenericContainerRequest) error {
 		cfgFile := testcontainers.ContainerFile{
 			HostFilePath:      C.GoString(filePath),
 			ContainerFilePath: C.GoString(targetPath),
 			FileMode:          0755,
 		}
 		req.Files = append(req.Files, cfgFile)
+        return nil
 	}
 
 	registerCustomizer(requestID, req)
@@ -144,8 +146,9 @@ func tc_bridge_with_file(requestID int, filePath *C.cchar_t, targetPath *C.cchar
 
 //export tc_bridge_with_exposed_tcp_port
 func tc_bridge_with_exposed_tcp_port(requestID int, port int) {
-	req := func(req *testcontainers.GenericContainerRequest) {
+	req := func(req *testcontainers.GenericContainerRequest) error {
 		req.ExposedPorts = append(req.ExposedPorts, strconv.Itoa(port)+"/tcp")
+        return nil
 	}
 
 	registerCustomizer(requestID, req)
