@@ -7,17 +7,30 @@ add_library(${TARGET} SHARED
     src/container.c
 )
 
-target_sources(${TARGET}
-    PUBLIC FILE_SET HEADERS
-    BASE_DIRS include
-    FILES include/testcontainers-c/container.h
+target_include_directories(${TARGET} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
 )
 
 target_link_libraries(${TARGET} PRIVATE testcontainers-bridge)
 
-configure_file(cmake.pc.in ${TARGET}.pc @ONLY)
-install(FILES ${SHIM_TARGET_LIB}
-    DESTINATION ${CMAKE_INSTALL_LIBDIR})
-install(FILES ${SHIM_TARGET_HEADER}
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-install(FILES ${CMAKE_BINARY_DIR}/${TARGET}.pc DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
+install(TARGETS ${TARGET} EXPORT ${TARGET}Targets)
+install(FILES $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> DESTINATION include)
+
+include(CMakePackageConfigHelpers)
+configure_package_config_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/${TARGET}Config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/${TARGET}Config.cmake
+    INSTALL_DESTINATION lib/cmake/${TARGET}
+)
+
+install(EXPORT ${TARGET}Targets
+    FILE ${TARGET}Config.cmake
+    NAMESPACE testcontainers-native::
+    DESTINATION lib/cmake/${TARGET}
+)
+
+install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/${TARGET}Config.cmake
+    DESTINATION lib/cmake/${TARGET}
+)
