@@ -1,6 +1,10 @@
 package main
 
+// #include <stdbool.h>
+// #include <stddef.h>
 // typedef const char cchar_t;
+// typedef bool (*exit_code_matcher)(int);
+// static bool invoke_matcher(exit_code_matcher f, int x) { return f(x); }
 import "C"
 
 import (
@@ -9,6 +13,7 @@ import (
 	"io"
 	"net/http"
 	"strconv"
+	"unsafe"
 
 	"github.com/docker/go-connections/nat"
 	"github.com/testcontainers/testcontainers-go"
@@ -18,6 +23,7 @@ import (
 var containerRequests []*testcontainers.ContainerRequest
 var containers []*testcontainers.Container
 var customizers map[int][]*testcontainers.CustomizeRequestOption
+var execStrategies map[int]*wait.ExecStrategy
 
 // Creates Unique container request and returns its ID
 //
@@ -98,11 +104,37 @@ func tc_bridge_get_container_log(containerID int) (log *C.char) {
 func tc_bridge_get_uri(containerID int, port int) (uri *C.char, ok bool, errstr *C.char) {
 	ctx := context.Background()
 	container := *containers[containerID]
-    str, err := _GetURI(ctx, container, port)
-    if err != nil {
-        return nil, false, ToCString(err)
-    }
-    return C.CString(str), true, nil
+	str, err := _GetURI(ctx, container, port)
+	if err != nil {
+		return nil, false, ToCString(err)
+	}
+	return C.CString(str), true, nil
+}
+
+//export tc_bridge_get_mapped_port
+func tc_bridge_get_mapped_port(containerID int, containerPort int) (mappedPort int, ok bool, errstr *C.char) {
+	ctx := context.Background()
+	container := *containers[containerID]
+
+	goPort, err := container.MappedPort(ctx, nat.Port(strconv.Itoa(containerPort)))
+	if err != nil {
+		return -1, false, ToCString(err)
+	}
+
+	return goPort.Int(), true, nil
+}
+
+//export tc_bridge_get_hostname
+func tc_bridge_get_hostname(containerID int) (hostname *C.char, ok bool, errstr *C.char) {
+	ctx := context.Background()
+	container := *containers[containerID]
+
+	hostIP, err := container.Host(ctx)
+	if err != nil {
+		return nil, false, ToCString(err)
+	}
+
+	return C.CString(hostIP), true, nil
 }
 
 func _GetURI(ctx context.Context, container testcontainers.Container, port int) (string, error) {
@@ -128,6 +160,35 @@ func tc_bridge_with_wait_for_http(requestID int, port int, url *C.cchar_t) {
 	registerCustomizer(requestID, req)
 }
 
+//export tc_bridge_with_wait_for_exec
+func tc_bridge_with_wait_for_exec(requestID int, cmd **C.cchar_t, cmdLen C.size_t) (strategyID int) {
+	convertedCmd := ToGoStringSlice(cmd, cmdLen)
+	strategy := wait.ForExec(convertedCmd)
+
+	if execStrategies == nil {
+		execStrategies = make(map[int]*wait.ExecStrategy)
+	}
+	execStrategies[requestID] = strategy
+
+	req := func(req *testcontainers.GenericContainerRequest) {
+		req.WaitingFor = strategy
+	}
+
+	registerCustomizer(requestID, req)
+
+	return requestID
+}
+
+//export tc_bridge_exec_with_exit_code_matcher
+func tc_bridge_exec_with_exit_code_matcher(strategyID int, matcher C.exit_code_matcher) {
+	strategy := execStrategies[strategyID]
+
+	execStrategies[strategyID] = strategy.WithExitCodeMatcher(func(exitCode int) bool {
+		result := C.invoke_matcher(matcher, C.int(exitCode))
+		return bool(result)
+	})
+}
+
 //export tc_bridge_with_file
 func tc_bridge_with_file(requestID int, filePath *C.cchar_t, targetPath *C.cchar_t) {
 	req := func(req *testcontainers.GenericContainerRequest) {
@@ -146,6 +207,18 @@ func tc_bridge_with_file(requestID int, filePath *C.cchar_t, targetPath *C.cchar
 func tc_bridge_with_exposed_tcp_port(requestID int, port int) {
 	req := func(req *testcontainers.GenericContainerRequest) {
 		req.ExposedPorts = append(req.ExposedPorts, strconv.Itoa(port)+"/tcp")
+	}
+
+	registerCustomizer(requestID, req)
+}
+
+//export tc_bridge_with_env
+func tc_bridge_with_env(requestID int, name *C.cchar_t, value *C.cchar_t) {
+	req := func(req *testcontainers.GenericContainerRequest) {
+		if req.Env == nil {
+			req.Env = make(map[string]string)
+		}
+		req.Env[C.GoString(name)] = C.GoString(value)
 	}
 
 	registerCustomizer(requestID, req)
@@ -201,6 +274,17 @@ func ToCString(err error) *C.char {
 		return C.CString(fmt.Sprintf("%v", err))
 	}
 	return nil
+}
+
+func ToGoStringSlice(arrayStart **C.cchar_t, arrayLen C.size_t) []string {
+	outputSlice := make([]string, arrayLen)
+	inputSlice := unsafe.Slice(arrayStart, arrayLen)
+
+	for idx, cStr := range inputSlice {
+		outputSlice[idx] = C.GoString(cStr)
+	}
+
+	return outputSlice
 }
 
 func main() {}

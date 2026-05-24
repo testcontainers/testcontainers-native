@@ -18,6 +18,7 @@
             go
             ninja
             pre-commit
+            libpq
         ];
     };
   };

@@ -23,7 +23,8 @@ or even attach full-fledged API clients for fine-grain testing.
 The following modules are available for this project:
 
 - Embedded Generic container for DYI containers - [DEMO](../demo/generic-container/README.md)
-- [WireMock for API Mocking](./wiremock/README.md)
+- [WireMock for API Mocking](./wiremock/README.md)#
+- [PostgreSQL database](./postgresql/README.md)
 
 ## Using Modules
 
