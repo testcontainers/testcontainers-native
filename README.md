@@ -111,6 +111,11 @@ The best support is investing some time in the project.
 All contributions are welcome, checkout the [Contributor Guide](./CONTRIBUTING.md).
 Of course, [GitHub Sponsorships](https://github.com/sponsors/oleg-nenashev) will be appreciated too.
 
+## Contributing
+
+Any contributions are welcome!
+See the [Contributor Guide](./CONTRIBUTING.md).
+
 ## Read More
 
 - [Testcontainers](https://testcontainers.org/)

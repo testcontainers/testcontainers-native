@@ -1,7 +1,20 @@
-// Credits - https://github.com/hitsumabushi845/MkDocs-with-Remote-Containers
+// See the README for details
 {
-    "name": "Material for MkDocs",
+    "name": "Testcontainers Native Development",
     "dockerFile": "Dockerfile",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2.12.4": {
+            "version": "latest",
+            "moby": true
+        },
+        "ghcr.io/devcontainers-extra/features/cmake:1": {
+            "version": "3.31.9"
+        },
+        "ghcr.io/msclock/features/vcpkg:2": {
+            "version": "stable",
+            "vcpkgAutoUpdate": true
+        }
+    },
     "customizations": {
       "vscode": {
         // Set *default* container specific settings.json values on container create.
@@ -11,20 +24,40 @@
         },
         // Add the IDs of extensions you want installed when the container is created.
         "extensions": [
+          // C/C++ development
+          "ms-vscode.cmake-tools",
+          "ms-vscode.makefile-tools",
+          "ms-vscode.cpptools-extension-pack",
+          "cschlosser.doxdocgen",
+          // Golang development
+          "golang.go",
+          // Generic site and documentation development
+          "streetsidesoftware.code-spell-checker",
           "yzhang.markdown-all-in-one",
           "redhat.vscode-yaml",
           "shardulm94.trailing-spaces",
           "oderwat.indent-rainbow",
-          "msjsdiag.debugger-for-chrome"
+          "msjsdiag.debugger-for-chrome",
+          // GitHub Actions
+          "github.vscode-github-actions",
+          // Containers
+          "ms-azuretools.vscode-docker"
         ],
       },
+      // Configure properties specific to Codespaces.
+	    "codespaces": {
+		     "openFiles": [
+			     "README.md",
+			     "CONTRIBUTING.md"
+		   ]
+	    }
     },
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     "forwardPorts": [
       8000
     ],
-    // Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": "pip3 install -r .devcontainer/requirements.txt "
-    // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
-    //"remoteUser": "vscode"
+    "remoteUser": "vscode",
+    // Updates cache on new container runs
+    "postCreateCommand": "pip3 install -r .devcontainer/requirements.txt",
+    // "overrideCommand": false
   }

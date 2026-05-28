@@ -6,6 +6,17 @@
 Contributions are welcome!
 For any feedback and suggestions, use GitHub Issues.
 
+## Developer Environment
+
+You can use one of the following developer environments:
+
+* [Dev Containers](.devcontainer/README.md) - for local development, testing,
+  and also for the documentation site development.
+* GitHub Codespaces (with a Dev Containers)
+* Experimental: Nix
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/testcontainers/testcontainers-native)
+
 ## Community Slack
 
 We use the `#testcontainers-native` channel on [Testcontainers Slack](https://slack.testcontainers.com/).

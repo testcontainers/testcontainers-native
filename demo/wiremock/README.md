@@ -1,6 +1,6 @@
 # Demo - WireMock on Testcontainers C
 
-Demonstrates usage of the [WireMock Module for Testcontainers C](../../modules/wiremock/) in a simple main function.
+Demonstrates usage of the [WireMock Module for Testcontainers C](../../modules/wiremock/README.md) in a simple main function.
 No test framework is used here.
 
 ## Running demo
