@@ -24,6 +24,7 @@ mypy-extensions==1.0.0
 packaging==23.2
 pathspec==0.11.2
 platformdirs==3.11.0
+pygments==2.19.2, # https://github.com/pygments/pygments/issues/3076
 python-dateutil==2.8.2
 python-slugify==8.0.1
 pyyaml==6.0.1
