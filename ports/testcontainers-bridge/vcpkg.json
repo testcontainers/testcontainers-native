@@ -1,0 +1,17 @@
+{
+  "name": "testcontainers-bridge",
+  "version-string": "0.1.0",
+  "description": "Testcontainers Go bridge library for native languages",
+  "homepage": "https://github.com/testcontainers/testcontainers-native",
+  "license": "MIT",
+  "dependencies":[
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    }
+  ]
+}

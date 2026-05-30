@@ -11,7 +11,7 @@
             "version": "3.31.9"
         },
         "ghcr.io/msclock/features/vcpkg:2": {
-            "version": "stable",
+            "version": "latest",
             "vcpkgAutoUpdate": true
         }
     },
