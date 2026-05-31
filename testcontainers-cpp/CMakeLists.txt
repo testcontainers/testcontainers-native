@@ -1,21 +1,21 @@
-set(TARGET testcontainers-c)
+set(TARGET testcontainers-cpp)
 set(TARGET_NAME ${TARGET})
-set(TARGET_DESCRIPTION "Testcontainer library for C")
+set(TARGET_DESCRIPTION "Testcontainer library for C++")
 set(TARGET_VERSION ${PROJECT_VERSION})
 
-add_library(${TARGET} SHARED
-    src/container.c
-)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-target_include_directories(${TARGET} PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+add_library(${TARGET} INTERFACE)
+target_include_directories(${TARGET} INTERFACE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<INSTALL_INTERFACE:include>
 )
 
-target_link_libraries(${TARGET} PRIVATE testcontainers-bridge)
+target_link_libraries(${TARGET} INTERFACE testcontainers-c)
 
 install(TARGETS ${TARGET} EXPORT ${TARGET}Targets)
-install(FILES $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> DESTINATION include)
+install(FILES testcontainers.hpp DESTINATION include)
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
