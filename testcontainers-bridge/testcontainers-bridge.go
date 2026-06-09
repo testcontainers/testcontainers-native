@@ -171,8 +171,9 @@ func tc_bridge_with_wait_for_exec(requestID int, cmd **C.cchar_t, cmdLen C.size_
 	}
 	execStrategies[requestID] = strategy
 
-	req := func(req *testcontainers.GenericContainerRequest) {
+	req := func(req *testcontainers.GenericContainerRequest) error {
 		req.WaitingFor = strategy
+		return nil
 	}
 
 	registerCustomizer(requestID, req)
@@ -217,11 +218,12 @@ func tc_bridge_with_exposed_tcp_port(requestID int, port int) {
 
 //export tc_bridge_with_env
 func tc_bridge_with_env(requestID int, name *C.cchar_t, value *C.cchar_t) {
-	req := func(req *testcontainers.GenericContainerRequest) {
+	req := func(req *testcontainers.GenericContainerRequest) error {
 		if req.Env == nil {
 			req.Env = make(map[string]string)
 		}
 		req.Env[C.GoString(name)] = C.GoString(value)
+		return nil
 	}
 
 	registerCustomizer(requestID, req)
