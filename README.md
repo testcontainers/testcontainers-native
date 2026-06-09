@@ -1,7 +1,7 @@
 # Testcontainers for C/C++/Swift and other native languages
 
 <p align="center">
-  <img width="512px" src="docs/images/logo/logo_testcontainers_native_wide.png" alt="Testcontainers Native Logo"/>
+  <img width="512px" src="docs/images/testcontainers-native-banner.png" alt="Testcontainers Native Logo"/>
 </p>
 
 [![Slack: testcontainers-native on slack.testcontainers.org](https://img.shields.io/badge/Slack-%23testcontainers%E2%80%94native-brightgreen?style=flat&logo=slack)](https://slack.testcontainers.org/)
